@@ -1,0 +1,24 @@
+libmso is a static library and depends on other calligra shared libs
+
+--- origsrc/calligra-2.3.83/filters/stage/powerpoint/CMakeLists.txt	2011-10-22 02:39:33.000000000 -0500
++++ src/calligra-2.3.83/filters/stage/powerpoint/CMakeLists.txt	2011-11-02 16:53:33.109838700 -0500
+@@ -7,7 +7,7 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS}
+ endif("${CMAKE_CXX_COMPILER_ID}" MATCHES "SunPro")
+ 
+ kde4_add_library(ppttoodplib STATIC PptToOdp.cpp ParsedPresentation.cpp DateTimeFormat.cpp pptstyle.cpp)
+-target_link_libraries(ppttoodplib koodf mso ${ZLIB_LIBRARIES})
++target_link_libraries(ppttoodplib mso koodf ${ZLIB_LIBRARIES})
+ 
+ kde4_add_executable(ppttoodp ppttoodpmain.cpp)
+ target_link_libraries(ppttoodp ppttoodplib)
+--- origsrc/calligra-2.3.83/filters/words/msword-odf/CMakeLists.txt	2011-10-22 02:39:33.000000000 -0500
++++ src/calligra-2.3.83/filters/words/msword-odf/CMakeLists.txt	2011-11-02 21:19:04.641085800 -0500
+@@ -25,7 +25,7 @@ kde4_add_plugin(mswordodf_import ${mswor
+ 
+ #TODO cause of NumberFormatParser we depend on msooxml. Fix that!
+ #target_link_libraries(mswordodf_import kowv2 komain mso ${ZLIB_LIBRARIES})
+-target_link_libraries(mswordodf_import kowv2 komain mso msooxml ${ZLIB_LIBRARIES})
++target_link_libraries(mswordodf_import mso kowv2 komain msooxml ${ZLIB_LIBRARIES})
+ 
+ install(TARGETS mswordodf_import  DESTINATION ${PLUGIN_INSTALL_DIR})
+ 

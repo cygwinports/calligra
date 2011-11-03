@@ -1,0 +1,7 @@
+category: KDE
+requires: calligra-libs libgcc1 libkdecore5 libQtCore4 libQtGui4 libstdc++6 okular
+external-source: calligra
+sdesc: "Okular OpenDocument Presentation plugin"
+ldesc: "Calligra Suite is a collection of office applications linked together 
+by a common base.  This common base assures that all office application 
+can work together and also share a common look and feel."

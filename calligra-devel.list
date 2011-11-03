@@ -1,0 +1,21 @@
+--exclude=kis_*.h --exclude=krita_export.h --exclude=StatesRegistry.h
+usr/include/kde4/*.cpp
+usr/include/kde4/*.h
+usr/include/kde4/changetracker/
+usr/include/kde4/styles/
+usr/lib/libflake.dll.a
+usr/lib/libkoabstraction.dll.a
+usr/lib/libkochart.dll.a
+usr/lib/libkokross.dll.a
+usr/lib/libkomain.dll.a
+usr/lib/libkoodf.dll.a
+usr/lib/libkopageapp.dll.a
+usr/lib/libkoplugin.dll.a
+usr/lib/libkoproperty.dll.a
+usr/lib/libkoreport.dll.a
+usr/lib/libkotext.dll.a
+usr/lib/libkowidgets.dll.a
+usr/lib/libkundo2.dll.a
+usr/lib/libpigmentcms.dll.a
+usr/lib/libtextlayout.dll.a
+usr/share/kde4/apps/cmake/

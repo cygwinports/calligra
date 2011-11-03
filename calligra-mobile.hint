@@ -1,0 +1,5 @@
+category: KDE
+requires: calligra-libs calligra-tables calligra-words libgcc1 libGL1 libkdecore5 libstdc++6 libQtCore4 libQtDBus4 libQtGui4 libQtNetwork4 libQtOpenGL4 libQtXml4 libX11_6 libxml2
+external-source: calligra
+sdesc: "Calligra Suite mobile interface"
+ldesc: "KDE Office suite"

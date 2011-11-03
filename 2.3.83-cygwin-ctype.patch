@@ -1,0 +1,13 @@
+--- origsrc/calligra-2.3.83/krita/image/kis_painter.cc	2011-10-22 02:39:33.000000000 -0500
++++ src/calligra-2.3.83/krita/image/kis_painter.cc	2011-11-02 16:54:09.101500800 -0500
+@@ -65,6 +65,10 @@
+ #include "kis_paintop_registry.h"
+ #include "kis_perspective_math.h"
+ 
++#ifdef __CYGWIN__
++#undef _C
++#endif
++
+ // Maximum distance from a Bezier control point to the line through the start
+ // and end points for the curve to be considered flat.
+ #define BEZIER_FLATNESS_THRESHOLD 0.5

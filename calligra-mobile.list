@@ -1,0 +1,8 @@
+etc/postinstall/
+usr/bin/calligramobile.exe
+usr/bin/cygkoabstraction-8.dll
+usr/share/applications/hildon/calligramobile.desktop
+usr/share/calligramobile-templates/
+usr/share/dbus-1/services/com.nokia.CalligraMobile.service
+usr/share/icons/hicolor/*/apps/calligramobile.*
+usr/share/icons/hicolor/*/hildon/

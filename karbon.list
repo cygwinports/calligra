@@ -1,0 +1,17 @@
+etc/postinstall/
+usr/bin/cygkarbon*
+usr/bin/cygkdeinit4_karbon.dll
+usr/bin/karbon.exe
+usr/lib/kde4/karbon*
+usr/lib/kde4/wmfexport.dll
+usr/lib/kde4/wmfimport.dll
+usr/lib/kde4/wpgimport.dll
+usr/share/applications/kde4/karbon.desktop
+usr/share/icons/hicolor/*/apps/karbon.*
+usr/share/kde4/apps/karbon/
+usr/share/kde4/config/karbonrc
+usr/share/kde4/services/karbon*
+usr/share/kde4/servicetypes/karbon_module.desktop
+usr/share/kde4/services/ServiceMenus/karbon_konqi.desktop
+usr/share/templates/.source/Illustration.karbon
+usr/share/templates/Illustration.desktop

@@ -1,0 +1,11 @@
+--- origsrc/calligra-2.3.83/cmake/modules/FindLibRCPS.cmake	2011-10-22 02:39:32.000000000 -0500
++++ src/calligra-2.3.83/cmake/modules/FindLibRCPS.cmake	2011-11-02 16:50:11.508686800 -0500
+@@ -23,7 +23,7 @@ if(LIBRCPS_INCLUDE_DIR AND LIBRCPS_LIBRA
+ endif(LIBRCPS_INCLUDE_DIR AND LIBRCPS_LIBRARIES)
+ 
+ find_path(LIBRCPS_INCLUDE_DIR librcps.h)
+-find_library(LIBRCPS_LIBRARIES librcps.so)
++find_library(LIBRCPS_LIBRARIES rcps)
+ 
+ if(LIBRCPS_INCLUDE_DIR AND LIBRCPS_LIBRARIES)
+   set(FIND_LIBRCPS_VERSION_SOURCE

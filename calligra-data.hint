@@ -1,0 +1,7 @@
+category: KDE
+requires:
+external-source: calligra
+sdesc: "Calligra Suite (common data)"
+ldesc: "Calligra Suite is a collection of office applications linked together 
+by a common base.  This common base assures that all office application 
+can work together and also share a common look and feel."

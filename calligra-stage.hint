@@ -1,0 +1,8 @@
+category: KDE
+requires: calligra-libs libgcc1 libkdecore5 libphonon4 libQtCore4 libQtDBus4 libQtGui4 libQtSvg4 libQtWebKit4 libQtXml4 libstdc++6
+external-source: calligra
+sdesc: "KDE presentation program (aka KPresenter)"
+ldesc: "Calligra Stage is a presentation application. With Stage, you 
+can prepare a set of slides for use in an on-screen slideshow or for 
+printing. Your slides can include text and graphics in a variety of 
+formats, and of course, you can embed all sorts of objects."

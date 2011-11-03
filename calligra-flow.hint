@@ -1,0 +1,7 @@
+category: KDE
+requires: calligra-libs libgcc1 libkdecore5 libQtCore4 libQtGui4 libstdc++6
+external-source: calligra
+sdesc: "KDE diagram and flowchart editor (aka Kivio)"
+ldesc: "Flow is an easy to use diagramming and flowcharting application with
+tight integration to the other Calligra Suite applications. It enables you to
+create network diagrams, organisation charts, flowcharts and more."

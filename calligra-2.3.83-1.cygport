@@ -1,0 +1,22 @@
+inherit kde4
+
+DESCRIPTION="KDE integrated office suite"
+HOMEPAGE="http://www.calligra-suite.org/"
+
+PATCH_URI="
+	2.3.83-as-needed.patch
+	2.3.83-cygwin-ctype.patch
+	2.3.83-dcmtk-static.patch
+	2.3.83-find-libkcal.patch
+	2.3.83-find-librcps.patch
+	2.3.83-libwpd09.patch
+	2.3.83-quickprint-exec.patch
+"
+
+PKG_NAMES="calligra-libs calligra-data calligra-devel calligra-flow
+	   calligra-mobile calligra-plan calligra-stage calligra-tables
+	   calligra-tools calligra-words
+	   braindump karbon kexi krita kthesaurus okular-odp"
+
+# active: not working
+CYGCMAKE_ARGS="-DBUILD_active=NO -DQCA2_LIBRARIES=${QT4_LIBDIR}/libqca.dll.a"
