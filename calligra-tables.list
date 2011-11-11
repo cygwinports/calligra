@@ -21,6 +21,7 @@ usr/lib/kde4/xlsximport.dll
 usr/lib/libcalligratables*
 usr/share/applications/kde4/tables.desktop
 usr/share/doc/HTML/en/tables/
+usr/share/doc/calligra-tables/
 usr/share/icons/hicolor/*/apps/kspread.*
 usr/share/kde4/apps/tables/
 usr/share/kde4/config/tablesrc

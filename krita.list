@@ -8,6 +8,7 @@ usr/lib/kde4/krita*
 usr/lib/libkrita*
 usr/share/applications/kde4/krita*
 usr/share/color/icc/krita/
+usr/share/doc/krita/
 usr/share/icons/hicolor/*/apps/krita.*
 usr/share/kde4/apps/krita/
 usr/share/kde4/apps/kritaplugins/

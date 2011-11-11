@@ -9,7 +9,6 @@ PATCH_URI="
 	2.3.83-dcmtk-static.patch
 	2.3.83-find-libkcal.patch
 	2.3.83-find-librcps.patch
-	2.3.83-libwpd09.patch
 	2.3.83-quickprint-exec.patch
 "
 

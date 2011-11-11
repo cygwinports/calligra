@@ -5,6 +5,7 @@ usr/bin/cygkdeinit4_calligraflow.dll
 usr/lib/kde4/flowdockersplugin.dll
 usr/lib/kde4/flowpart.dll
 usr/share/applications/kde4/flow.desktop
+usr/share/doc/calligra-flow/
 usr/share/kde4/apps/flow/
 usr/share/kde4/config/flowrc
 usr/share/kde4/config/flow_stencils.knsrc

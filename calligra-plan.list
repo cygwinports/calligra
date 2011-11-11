@@ -26,6 +26,7 @@ usr/lib/libplanworkfactory.dll.a
 usr/lib/librcps_plan.dll.a
 usr/share/applications/kde4/plan.desktop
 usr/share/applications/kde4/planwork.desktop
+usr/share/doc/calligra-plan/
 usr/share/icons/hicolor/128x128/apps/calligraplan.png
 usr/share/icons/hicolor/128x128/apps/planwork.png
 usr/share/icons/hicolor/128x128/mimetypes/application-x-vnd.kde.plan.png

@@ -1,5 +1,5 @@
 category: KDE Database
-requires: calligra-libs libgcc1 libglib2.0_0 libiconv2 libkdecore5 libmarblewidget12 libmysqlclient16 libpqxx3.1 libQt3Support4 libQtCore4 libQtGui4 libQtWebKit4 libQtXml4 libsqlite3_0 libstdc++6 libsybdb5 libxbase2.0_0
+requires: calligra-libs libgcc1 libglib2.0_0 libiconv2 libkdecore5 libmarblewidget12 libmysqlclient18 libpqxx3.1 libQt3Support4 libQtCore4 libQtGui4 libQtWebKit4 libQtXml4 libsqlite3_0 libstdc++6 libsybdb5 libxbase2.0_0
 external-source: calligra
 sdesc: "KDE data management application"
 ldesc: "Kexi is an integrated data management application. It can be 

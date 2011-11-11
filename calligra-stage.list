@@ -11,6 +11,7 @@ usr/lib/kde4/powerpointimport.dll
 usr/lib/kde4/pptximport.dll
 usr/lib/libcalligrastageprivate.dll.a
 usr/share/applications/kde4/stage.desktop
+usr/share/doc/calligra-stage/
 usr/share/icons/hicolor/16x16/actions/black.png
 usr/share/icons/hicolor/16x16/actions/highlight.png
 usr/share/icons/hicolor/16x16/actions/pen.png
