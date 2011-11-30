@@ -1,6 +1,6 @@
 etc/postinstall/
 usr/bin/calligramobile.exe
-usr/bin/cygkoabstraction-8.dll
+usr/bin/cygkoabstraction-9.dll
 usr/share/applications/hildon/calligramobile.desktop
 usr/share/calligramobile-templates/
 usr/share/dbus-1/services/com.nokia.CalligraMobile.service

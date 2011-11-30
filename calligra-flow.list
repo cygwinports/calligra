@@ -1,6 +1,6 @@
 etc/postinstall/
 usr/bin/calligraflow.exe
-usr/bin/cygflowprivate-8.dll
+usr/bin/cygflowprivate-9.dll
 usr/bin/cygkdeinit4_calligraflow.dll
 usr/lib/kde4/flowdockersplugin.dll
 usr/lib/kde4/flowpart.dll

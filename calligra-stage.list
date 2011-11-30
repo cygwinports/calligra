@@ -1,6 +1,6 @@
 etc/postinstall/
 usr/bin/calligrastage.exe
-usr/bin/cygcalligrastageprivate-8.dll
+usr/bin/cygcalligrastageprivate-9.dll
 usr/bin/cygkdeinit4_calligrastage.dll
 usr/include/kde4/stage/
 usr/lib/kde4/calligrastage*

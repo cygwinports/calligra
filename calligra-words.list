@@ -1,7 +1,7 @@
 etc/postinstall/
 usr/bin/calligrawords.exe
 usr/bin/cygkdeinit4_calligrawords.dll
-usr/bin/cygwordsprivate-8.dll
+usr/bin/cygwordsprivate-9.dll
 usr/include/kde4/words/
 usr/lib/kde4/abiwordexport.dll
 usr/lib/kde4/abiwordimport.dll
