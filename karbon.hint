@@ -1,5 +1,5 @@
 category: KDE Graphics
-requires: calligra-libs libgcc1 libkdecore5 libpoppler13 libQtCore4 libQtGui4 libQtXml4 libstdc++6 libwpd0.9_9 libwpg0.2_2 pstoedit
+requires: calligra-libs libgcc1 libkdecore5 libpoppler19 libQtCore4 libQtGui4 libQtXml4 libstdc++6 libwpd0.9_9 libwpg0.2_2 pstoedit
 external-source: calligra
 sdesc: "KDE SVG drawing application"
 ldesc: "Karbon is a vector-based drawing application for Calligra Suite. It 

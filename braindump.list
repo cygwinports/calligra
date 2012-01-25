@@ -1,6 +1,6 @@
 etc/postinstall/
 usr/bin/braindump.exe
-usr/bin/cygbraindumpcore.dll
+usr/bin/cygbraindump*.dll
 usr/include/kde4/StatesRegistry.h
 usr/lib/kde4/stateshape.dll
 usr/lib/kde4/webshape.dll
@@ -8,6 +8,7 @@ usr/lib/libbraindumpcore.dll.a
 usr/share/applications/kde4/braindump.desktop
 usr/share/icons/hicolor/*/actions/stateshape.*
 usr/share/icons/hicolor/*/actions/statetool.*
+usr/share/icons/hicolor/*/apps/braindump.*
 usr/share/kde4/apps/braindump/
 usr/share/kde4/apps/stateshape/
 usr/share/kde4/services/stateshape.desktop

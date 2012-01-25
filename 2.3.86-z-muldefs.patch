@@ -1,0 +1,11 @@
+--- origsrc/calligra-2.3.86/krita/plugins/colorspaces/ctlcs/CMakeLists.txt	2012-01-06 21:25:02.000000000 -0600
++++ src/calligra-2.3.86/krita/plugins/colorspaces/ctlcs/CMakeLists.txt	2012-01-25 13:53:18.333452900 -0600
+@@ -38,6 +38,8 @@ set( CTLCS_SRCS
+ 
+ kde4_add_plugin(krita_ctlcs_plugin ${CTLCS_SRCS})
+ 
++set_target_properties(krita_ctlcs_plugin PROPERTIES LINK_FLAGS -Wl,--allow-multiple-definition)
++
+ target_link_libraries(krita_ctlcs_plugin pigmentcms ${KDE4_KPARTS_LIBS} ${OPENEXR_LIBRARIES} ${OPENCTL_LDFLAGS})
+ 
+ install(TARGETS krita_ctlcs_plugin  DESTINATION ${PLUGIN_INSTALL_DIR})
