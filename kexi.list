@@ -9,6 +9,7 @@ usr/lib/kde4/krossmodulekexidb.dll
 usr/lib/libkexi*
 usr/lib/libkformdesigner.dll.a
 usr/share/applications/kde4/kexi.desktop
+usr/share/doc/HTML/en/kexi/
 usr/share/doc/kexi/
 usr/share/kde4/apps/kexi/
 usr/share/kde4/config/kexirc
