@@ -1,5 +1,5 @@
 category: KDE Graphics
-requires: create calligra-libs libexiv2_11 libfftw3_3 libgcc1 libGL1 libGLEW1.7 libGLU1 libilmbase6 libjpeg8 libkdecore5 libkdcraw20 liblcms2_2 libOpenGTL0.8 libopenjpeg3 libpng14 libpoppler-qt4_3 libQtCore4 libQtGTL0.1 libQtGui4 libQtOpenGL4 libQtSvg4 libQtXml4 libstdc++6 libtiff5 libX11_6
+requires: create calligra-libs libexiv2_11 libfftw3_3 libgcc1 libGL1 libGLEW1.7 libGLU1 libilmbase6 libjpeg8 libkdecore5 libkdcraw20 liblcms2_2 libOpenGTL0.8 libopenjpeg1 libpng14 libpoppler-qt4_3 libQtCore4 libQtGTL0.1 libQtGui4 libQtOpenGL4 libQtSvg4 libQtXml4 libstdc++6 libtiff5 libX11_6
 external-source: calligra
 sdesc: "KDE layered pixel image editing program"
 ldesc: "Krita is a painting and image editing application for Calligra Suite. 

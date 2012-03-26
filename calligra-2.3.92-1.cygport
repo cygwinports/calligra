@@ -14,7 +14,7 @@ PATCH_URI="
 "
 
 PKG_NAMES="calligra-libs calligra-data calligra-devel calligra-flow
-	   calligra-mobile calligra-plan calligra-stage calligra-tables
+	   calligra-mobile calligra-plan calligra-sheets calligra-stage
 	   calligra-tools calligra-words
 	   braindump karbon kexi krita kthesaurus okular-odp"
 

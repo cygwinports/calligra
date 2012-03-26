@@ -1,4 +1,4 @@
 category: KDE
-requires: calligra-flow calligra-plan calligra-stage calligra-tables calligra-words calligra-tools karbon kexi krita kthesaurus
+requires: calligra-flow calligra-plan calligra-stage calligra-sheets calligra-words calligra-tools karbon kexi krita kthesaurus
 sdesc: "KDE Office suite (meta-package)"
 ldesc: "KDE Office suite"

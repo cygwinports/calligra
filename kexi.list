@@ -1,7 +1,7 @@
 etc/postinstall/
 usr/bin/cygkexi*
 usr/bin/cygkformdesigner-9.dll
-usr/bin/kexi.exe
+usr/bin/kexi*
 usr/include/kde4/kexi/
 usr/lib/kde4/kexi*
 usr/lib/kde4/kformdesigner_*
