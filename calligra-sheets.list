@@ -21,6 +21,7 @@ usr/lib/kde4/xlsximport.dll
 usr/lib/libcalligrasheets*
 usr/share/applications/kde4/sheets.desktop
 usr/share/doc/calligra-sheets/
+usr/share/doc/HTML/en/sheets/
 usr/share/icons/hicolor/*/apps/kspread.*
 usr/share/kde4/apps/sheets/
 usr/share/kde4/apps/tables/

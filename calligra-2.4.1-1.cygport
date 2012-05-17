@@ -19,4 +19,4 @@ PKG_NAMES="calligra-libs calligra-data calligra-devel calligra-flow
 	   braindump karbon kexi krita kthesaurus okular-odp"
 
 # active: not working
-CYGCMAKE_ARGS="-DBUILD_active=NO -DQCA2_LIBRARIES=${QT4_LIBDIR}/libqca.dll.a"
+CYGCMAKE_ARGS="-DIHAVEPATCHEDQT=YES -DBUILD_active=NO -DQCA2_LIBRARIES=${QT4_LIBDIR}/libqca.dll.a"

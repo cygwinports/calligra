@@ -40,7 +40,6 @@ usr/lib/kde4/koreport_chartplugin.dll
 usr/lib/kde4/koreport_mapsplugin.dll
 usr/lib/kde4/koreport_webplugin.dll
 usr/lib/kde4/kounavailpart.dll
-usr/lib/kde4/mapshape.dll
 usr/lib/kde4/musicshape.dll
 usr/lib/kde4/pathshapes.dll
 usr/lib/kde4/pictureshape.dll
@@ -80,7 +79,6 @@ usr/share/kde4/services/koreport_chartplugin.desktop
 usr/share/kde4/services/koreport_mapsplugin.desktop
 usr/share/kde4/services/koreport_webplugin.desktop
 usr/share/kde4/services/kounavail.desktop
-usr/share/kde4/services/mapshape.desktop
 usr/share/kde4/services/musicshape.desktop
 usr/share/kde4/services/pathshapes.desktop
 usr/share/kde4/services/pictureshape.desktop
