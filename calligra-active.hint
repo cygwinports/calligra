@@ -1,5 +1,0 @@
-category: KDE
-requires: calligra-libs calligra-sheets calligra-words libgcc1 libkdecore5 libstdc++6 libQtCore4 libQtDeclarative4 libQtGui4
-external-source: calligra
-sdesc: "Calligra Suite Active Plasma interface"
-ldesc: "KDE Office suite"

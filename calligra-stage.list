@@ -1,6 +1,6 @@
 etc/postinstall/
 usr/bin/calligrastage.exe
-usr/bin/cygcalligrastageprivate-9.dll
+usr/bin/cygcalligrastageprivate-*.dll
 usr/bin/cygkdeinit4_calligrastage.dll
 usr/include/kde4/stage/
 usr/lib/kde4/calligrastage*
@@ -25,5 +25,5 @@ usr/share/kde4/services/kpr*
 usr/share/kde4/services/stagepart.desktop
 usr/share/kde4/services/ServiceMenus/kpresenter_konqi.desktop
 usr/share/kde4/servicetypes/kpr_*
-usr/share/templates/.source/Presentation.kpt
+usr/share/templates/.source/Presentation.odp
 usr/share/templates/Presentation.desktop

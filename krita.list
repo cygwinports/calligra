@@ -12,6 +12,7 @@ usr/share/doc/krita/
 usr/share/icons/hicolor/*/apps/krita.*
 usr/share/kde4/apps/krita/
 usr/share/kde4/apps/kritaplugins/
+usr/share/kde4/apps/color-schemes/Krita*
 usr/share/kde4/config/krita*
 usr/share/kde4/services/krita*
 usr/share/kde4/services/ServiceMenus/krita_konqi.desktop

@@ -4,7 +4,6 @@ usr/include/kde4/*.h
 usr/include/kde4/changetracker/
 usr/include/kde4/styles/
 usr/lib/libflake.dll.a
-usr/lib/libkoabstraction.dll.a
 usr/lib/libkochart.dll.a
 usr/lib/libkokross.dll.a
 usr/lib/libkomain.dll.a

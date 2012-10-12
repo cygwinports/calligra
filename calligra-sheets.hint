@@ -1,7 +1,0 @@
-category: KDE Math
-requires: gsl calligra-libs libgcc1 libkdecore5 libQt3Support4 libQtCore4 libQtDBus4 libQtGui4 libQtSql4 libQtXml4 libstdc++6 zlib0
-external-source: calligra
-sdesc: "KDE spreadsheet program (aka KSpread)"
-ldesc: "Calligra Tables is a scriptable spreadsheet program which provides both 
-table-oriented sheets and support for complex mathematical formulas and 
-statistics."

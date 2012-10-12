@@ -1,0 +1,42 @@
+inherit kde4 python
+
+NAME="calligra"
+VERSION=2.5.2
+RELEASE=1
+CATEGORY="KDE Office"
+SUMMARY="KDE integrated office suite"
+HOMEPAGE="http://www.calligra-suite.org/"
+
+PATCH_URI="
+	2.3.83-as-needed.patch
+	2.3.83-cygwin-ctype.patch
+	2.3.83-dcmtk-static.patch
+	2.3.83-find-libkcal.patch
+	2.3.83-find-librcps.patch
+	2.3.86-z-muldefs.patch
+"
+
+PKG_NAMES="calligra-libs calligra-data calligra-devel calligra-flow
+	   calligra-plan calligra-sheets calligra-stage calligra-tools
+	   calligra-words braindump karbon kexi krita okular-odp"
+# the entire suite, except for -devel
+calligra_REQUIRES="calligra-flow calligra-plan calligra-stage calligra-sheets calligra-words calligra-tools karbon kexi krita"
+calligra_data_SUMMARY="Calligra Suite (common data)"
+calligra_libs_REQUIRES="calligra-data"
+calligra_libs_SUMMARY="Calligra Suite libraries and common plugins"
+calligra_devel_SUMMARY="Calligra Suite libraries (development)"
+calligra_active_SUMMARY="Calligra Suite Active Plasma interface"
+calligra_flow_SUMMARY="KDE diagram and flowchart editor (aka Kivio)"
+calligra_plan_SUMMARY="KDE project management application (aka KPlato)"
+calligra_sheets_SUMMARY="KDE spreadsheet program (aka KSpread)"
+calligra_stage_SUMMARY="KDE presentation program (aka KPresenter)"
+calligra_tools_SUMMARY="Calligra Suite command-line tools"
+calligra_words_SUMMARY="KDE word processor (aka KWord)"
+braindump_SUMMARY="KDE whiteboard application"
+karbon_SUMMARY="KDE SVG drawing application"
+kexi_SUMMARY="KDE data management application"
+krita_SUMMARY="KDE layered pixel image editing program"
+okular_odp_SUMMARY="Okular OpenDocument Presentation plugin"
+
+# active: not working
+CYGCMAKE_ARGS="-DIHAVEPATCHEDQT=YES -DBUILD_active=NO -DQCA2_LIBRARIES=${QT4_LIBDIR}/libqca.dll.a"

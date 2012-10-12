@@ -1,7 +1,0 @@
-category: KDE
-requires: calligra-libs libkdecore5-devel libQtCore4-devel libQtDBus4-devel libQtGui4-devel libQtXml4-devel
-external-source: calligra
-sdesc: "Calligra Suite libraries (development)"
-ldesc: "Calligra Suite is a collection of office applications linked together 
-by a common base.  This common base assures that all office application 
-can work together and also share a common look and feel."

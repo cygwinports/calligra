@@ -22,8 +22,9 @@ usr/lib/libcalligrasheets*
 usr/share/applications/kde4/sheets.desktop
 usr/share/doc/calligra-sheets/
 usr/share/doc/HTML/en/sheets/
-usr/share/icons/hicolor/*/apps/kspread.*
+usr/share/icons/hicolor/*/apps/sheets.*
 usr/share/kde4/apps/sheets/
+usr/share/kde4/apps/tables/
 usr/share/kde4/config/sheetsrc
 usr/share/kde4/config.kcfg/sheets.kcfg
 usr/share/kde4/services/krossmodulekspread.desktop
@@ -32,5 +33,5 @@ usr/share/kde4/services/spreadsheetshape*
 usr/share/kde4/services/sheetspart.desktop
 usr/share/kde4/services/ServiceMenus/kspread_konqi.desktop
 usr/share/kde4/servicetypes/sheets_plugin.desktop
-usr/share/templates/.source/SpreadSheet.kst
+usr/share/templates/.source/SpreadSheet.ods
 usr/share/templates/SpreadSheet.desktop

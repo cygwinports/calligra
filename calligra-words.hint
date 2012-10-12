@@ -1,9 +1,0 @@
-category: KDE Editors
-requires: calligra-libs libgcc1 libkdecore5 libQt3Support4 libQtCore4 libQtGui4 libQtSvg4 libQtXml4 libQtXmlPatterns4 libstdc++6 libwpd0.9_9 libxml2 zlib0
-external-source: calligra
-sdesc: "KDE word processor (aka KWord)"
-ldesc: "KWord is a frame-based word-processing and desktop publishing 
-application. KWord is capable of creating demanding and professional 
-looking documents. Whether you are a corporate or home user, production 
-artist or student, KWord will prove a valuable and easy to use tool for 
-all your word processing and layout needs."
