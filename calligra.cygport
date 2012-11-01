@@ -2,7 +2,7 @@ inherit kde4 python
 
 NAME="calligra"
 VERSION=2.5.3
-RELEASE=1
+RELEASE=2
 CATEGORY="KDE Office"
 SUMMARY="KDE integrated office suite"
 HOMEPAGE="http://www.calligra-suite.org/"
