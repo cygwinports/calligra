@@ -11,6 +11,7 @@ usr/share/icons/hicolor/*/actions/statetool.*
 usr/share/icons/hicolor/*/apps/braindump.*
 usr/share/kde4/apps/braindump/
 usr/share/kde4/apps/stateshape/
+usr/share/kde4/config/braindumprc
 usr/share/kde4/services/stateshape.desktop
 usr/share/kde4/services/webshape.desktop
 usr/share/kde4/servicetypes/braindump_extensions.desktop
