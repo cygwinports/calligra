@@ -1,11 +1,12 @@
 inherit kde4 python
 
 NAME="calligra"
-VERSION=2.5.5
+VERSION=2.7.2
 RELEASE=1
-CATEGORY="KDE Office"
+CATEGORY="Office"
 SUMMARY="KDE integrated office suite"
 HOMEPAGE="http://www.calligra-suite.org/"
+SRC_URI="mirror://kde/stable/calligra-${VERSION}/calligra-${VERSION}.tar.xz"
 
 PATCH_URI="
 	2.3.83-as-needed.patch
@@ -13,7 +14,6 @@ PATCH_URI="
 	2.3.83-dcmtk-static.patch
 	2.3.83-find-libkcal.patch
 	2.3.83-find-librcps.patch
-	2.3.86-z-muldefs.patch
 "
 
 PKG_NAMES="calligra-libs calligra-data calligra-devel calligra-flow
@@ -35,42 +35,46 @@ calligra_data_CONTENTS="
 calligra_libs_REQUIRES="calligra-data"
 calligra_libs_SUMMARY="Calligra Suite libraries and common plugins"
 calligra_libs_CONTENTS="
+	usr/bin/cygbasicflakes-*.dll
+	usr/bin/cygcalligradb-*.dll
+	usr/bin/cygcalligrakdchart-*.dll
+	usr/bin/cygcalligrakdgantt-*.dll
 	usr/bin/cygchartshapelib-*.dll
 	usr/bin/cygflake-*.dll
-	usr/bin/cygkdchart-*.dll
 	usr/bin/cygkformulalib-*.dll
-	usr/bin/cygkochart-*.dll
 	usr/bin/cygkokross-*.dll
 	usr/bin/cygkomain-*.dll
 	usr/bin/cygkoodf-*.dll
 	usr/bin/cygkopageapp-*.dll
 	usr/bin/cygkoplugin-*.dll
 	usr/bin/cygkoproperty-*.dll
+	usr/bin/cygkordf-*.dll
 	usr/bin/cygkoreport-*.dll
 	usr/bin/cygkotext-*.dll
 	usr/bin/cygkowidgets-*.dll
+	usr/bin/cygkowidgetutils-*.dll
 	usr/bin/cygkowv2-*.dll
 	usr/bin/cygkundo2-*.dll
-	usr/bin/cyglibwmf-*.dll
 	usr/bin/cygmsooxml-*.dll
+	usr/bin/cygodftraverse-*.dll
 	usr/bin/cygpigmentcms-*.dll
 	usr/bin/cygRtfReader-*.dll
 	usr/bin/cygtextlayout-*.dll
+	usr/bin/cygvectorimage-*.dll
 	usr/lib/kde4/artistictextshape.dll
 	usr/lib/kde4/autocorrect.dll
+	usr/lib/kde4/basicflakesplugin.dll
+	usr/lib/kde4/calligradocinfopropspage.dll
 	usr/lib/kde4/calligradockers.dll
-	usr/lib/kde4/calligragoogledocs.dll
+	usr/lib/kde4/calligraimagethumbnail.dll
 	usr/lib/kde4/calligrathumbnail.dll
 	usr/lib/kde4/changecase.dll
 	usr/lib/kde4/chartshape.dll
-	usr/lib/kde4/commentshape.dll
 	usr/lib/kde4/defaulttools.dll
 	usr/lib/kde4/formulashape.dll
-	usr/lib/kde4/kodocinfopropspage.dll
 	usr/lib/kde4/kolcmsengine.dll
 	usr/lib/kde4/kopabackgroundtool.dll
 	usr/lib/kde4/koreport_barcodeplugin.dll
-	usr/lib/kde4/koreport_chartplugin.dll
 	usr/lib/kde4/koreport_mapsplugin.dll
 	usr/lib/kde4/koreport_webplugin.dll
 	usr/lib/kde4/musicshape.dll
@@ -87,23 +91,20 @@ calligra_libs_CONTENTS="
 	usr/share/kde4/apps/formulashape/
 	usr/share/kde4/apps/koproperty/
 	usr/share/kde4/apps/musicshape/
-	usr/share/kde4/apps/pigmentcms/
 	usr/share/kde4/services/artistictextshape.desktop
 	usr/share/kde4/services/autocorrect.desktop
+	usr/share/kde4/services/basicflakesplugin.desktop
+	usr/share/kde4/services/calligra_odg_thumbnail.desktop
+	usr/share/kde4/services/calligradocinfopropspage.desktop
 	usr/share/kde4/services/calligradockers.desktop
-	usr/share/kde4/services/calligrathumbnail.desktop
 	usr/share/kde4/services/changecase.desktop
 	usr/share/kde4/services/chartshape.desktop
-	usr/share/kde4/services/commentshape.desktop
 	usr/share/kde4/services/defaulttools.desktop
 	usr/share/kde4/services/formulashape.desktop
-	usr/share/kde4/services/kchartpart.desktop
 	usr/share/kde4/services/kformulapart.desktop
-	usr/share/kde4/services/kodocinfopropspage.desktop
 	usr/share/kde4/services/kolcmsengine.desktop
 	usr/share/kde4/services/kopabackgroundtool.desktop
 	usr/share/kde4/services/koreport_barcodeplugin.desktop
-	usr/share/kde4/services/koreport_chartplugin.desktop
 	usr/share/kde4/services/koreport_mapsplugin.desktop
 	usr/share/kde4/services/koreport_webplugin.desktop
 	usr/share/kde4/services/musicshape.desktop
@@ -116,27 +117,25 @@ calligra_libs_CONTENTS="
 	usr/share/kde4/services/thesaurustool.desktop
 	usr/share/kde4/services/vectorshape.desktop
 	usr/share/kde4/services/videoshape.desktop
+	usr/share/kde4/servicetypes/calligradb_driver.desktop
 	usr/share/kde4/servicetypes/calligradocker.desktop
-	usr/share/kde4/servicetypes/calligrapart.desktop
 	usr/share/kde4/servicetypes/calligra_application.desktop
 	usr/share/kde4/servicetypes/calligra_deferred_plugin.desktop
+	usr/share/kde4/servicetypes/calligra_filter.desktop
+	usr/share/kde4/servicetypes/calligra_part.desktop
 	usr/share/kde4/servicetypes/filtereffect.desktop
 	usr/share/kde4/servicetypes/flake.desktop
 	usr/share/kde4/servicetypes/flakedevice.desktop
 	usr/share/kde4/servicetypes/flakeshape.desktop
 	usr/share/kde4/servicetypes/flaketool.desktop
 	usr/share/kde4/servicetypes/inlinetextobject.desktop
-	usr/share/kde4/servicetypes/kochart.desktop
-	usr/share/kde4/servicetypes/kofilter.desktop
-	usr/share/kde4/servicetypes/kofilterwrapper.desktop
-	usr/share/kde4/servicetypes/koplugin.desktop
 	usr/share/kde4/servicetypes/koreport_itemplugin.desktop
 	usr/share/kde4/servicetypes/pigment.desktop
 	usr/share/kde4/servicetypes/pigmentextension.desktop
 	usr/share/kde4/servicetypes/presentationeventaction.desktop
 	usr/share/kde4/servicetypes/scripteventaction.desktop
 	usr/share/kde4/servicetypes/texteditingplugin.desktop
-	usr/share/kde4/servicetypes/textvariableplugin.desktop
+	usr/share/mime/packages/calligra_svm.xml
 "
 calligra_devel_SUMMARY="Calligra Suite libraries (development)"
 calligra_devel_CONTENTS="
@@ -145,17 +144,19 @@ calligra_devel_CONTENTS="
 	usr/include/kde4/*.h
 	usr/include/kde4/changetracker/
 	usr/include/kde4/styles/
+	usr/lib/libbasicflakes.dll.a
 	usr/lib/libflake.dll.a
-	usr/lib/libkochart.dll.a
 	usr/lib/libkokross.dll.a
 	usr/lib/libkomain.dll.a
 	usr/lib/libkoodf.dll.a
 	usr/lib/libkopageapp.dll.a
 	usr/lib/libkoplugin.dll.a
 	usr/lib/libkoproperty.dll.a
+	usr/lib/libkordf.dll.a
 	usr/lib/libkoreport.dll.a
 	usr/lib/libkotext.dll.a
 	usr/lib/libkowidgets.dll.a
+	usr/lib/libkowidgetutils.dll.a
 	usr/lib/libkundo2.dll.a
 	usr/lib/libpigmentcms.dll.a
 	usr/lib/libtextlayout.dll.a
@@ -178,11 +179,12 @@ calligra_flow_CONTENTS="
 	usr/lib/kde4/vsdximport.dll
 	usr/share/applications/kde4/flow.desktop
 	usr/share/doc/calligra-flow/
+	usr/share/icons/hicolor/*/apps/calligraflow.*
 	usr/share/kde4/apps/flow/
 	usr/share/kde4/config/flowrc
 	usr/share/kde4/config/flow_stencils.knsrc
+	usr/share/kde4/services/ServiceMenus/flow_print.desktop
 	usr/share/kde4/services/flow*
-	usr/share/kde4/services/ServiceMenus/flow_konqi.desktop
 	usr/share/kde4/servicetypes/flow_dock.desktop
 "
 calligra_plan_SUMMARY="KDE project management application (aka KPlato)"
@@ -201,6 +203,7 @@ calligra_plan_CONTENTS="
 	usr/share/applications/kde4/plan*
 	usr/share/doc/calligra-plan/
 	usr/share/icons/hicolor/*/apps/calligraplan*
+	usr/share/icons/hicolor/*/mimetypes/application-x-vnd.kde.kplato.*
 	usr/share/icons/hicolor/*/mimetypes/application-x-vnd.kde.plan.*
 	usr/share/kde4/apps/plan*/
 	usr/share/kde4/config/plan*
@@ -208,6 +211,7 @@ calligra_plan_CONTENTS="
 	usr/share/kde4/services/krossmoduleplan.desktop
 	usr/share/kde4/services/plan*
 	usr/share/kde4/servicetypes/plan_schedulerplugin.desktop
+	usr/share/mime/packages/calligra_planner_mpp.xml
 "
 calligra_sheets_SUMMARY="KDE spreadsheet program (aka KSpread)"
 calligra_sheets_CONTENTS="
@@ -221,26 +225,27 @@ calligra_sheets_CONTENTS="
 	usr/lib/kde4/dbaseimport.dll
 	usr/lib/kde4/excelimporttodoc.dll
 	usr/lib/kde4/gnumeric*port.dll
-	usr/lib/kde4/krossmodulekspread.dll
+	usr/lib/kde4/krossmodulesheets.dll
 	usr/lib/kde4/kspread*
 	usr/lib/kde4/opencalc*port.dll
 	usr/lib/kde4/qproimport.dll
+	usr/lib/kde4/sheetssolver.dll
 	usr/lib/kde4/spreadsheetshape*
 	usr/lib/kde4/xlsximport.dll
 	usr/lib/libcalligrasheets*
 	usr/share/applications/kde4/sheets.desktop
 	usr/share/doc/calligra-sheets/
 	usr/share/doc/HTML/en/sheets/
-	usr/share/icons/hicolor/*/apps/sheets.*
+	usr/share/icons/hicolor/*/apps/calligrasheets.*
 	usr/share/kde4/apps/sheets/
-	usr/share/kde4/apps/tables/
 	usr/share/kde4/config/sheetsrc
 	usr/share/kde4/config.kcfg/sheets.kcfg
-	usr/share/kde4/services/krossmodulekspread.desktop
+	usr/share/kde4/services/ServiceMenus/sheets_print.desktop
+	usr/share/kde4/services/krossmodulesheets.desktop
 	usr/share/kde4/services/kspread*
 	usr/share/kde4/services/spreadsheetshape*
+	usr/share/kde4/services/sheets_*.desktop
 	usr/share/kde4/services/sheetspart.desktop
-	usr/share/kde4/services/ServiceMenus/kspread_konqi.desktop
 	usr/share/kde4/servicetypes/sheets_plugin.desktop
 	usr/share/templates/.source/SpreadSheet.ods
 	usr/share/templates/SpreadSheet.desktop
@@ -251,7 +256,6 @@ calligra_stage_CONTENTS="
 	usr/bin/*calligrastage*
 	usr/include/kde4/stage/
 	usr/lib/kde4/calligrastage*
-	usr/lib/kde4/Filterkpr2odf.dll
 	usr/lib/kde4/kprvariables.dll
 	usr/lib/kde4/kpr_*
 	usr/lib/kde4/powerpointimport.dll
@@ -263,14 +267,14 @@ calligra_stage_CONTENTS="
 	usr/share/icons/hicolor/16x16/actions/black.png
 	usr/share/icons/hicolor/16x16/actions/highlight.png
 	usr/share/icons/hicolor/16x16/actions/pen.png
-	usr/share/icons/hicolor/*/apps/stage.*
+	usr/share/icons/hicolor/*/apps/calligrastage.*
 	usr/share/kde4/apps/stage/
 	usr/share/kde4/config/stagerc
+	usr/share/kde4/services/ServiceMenus/stage_print.desktop
 	usr/share/kde4/services/calligrastage*
-	usr/share/kde4/services/Filterkpr2odf.desktop
 	usr/share/kde4/services/kpr*
+	usr/share/kde4/services/stage_*
 	usr/share/kde4/services/stagepart.desktop
-	usr/share/kde4/services/ServiceMenus/kpresenter_konqi.desktop
 	usr/share/kde4/servicetypes/kpr_*
 	usr/share/templates/.source/Presentation.odp
 	usr/share/templates/Presentation.desktop
@@ -282,30 +286,40 @@ calligra_tools_CONTENTS="
 	usr/bin/cstester.exe
 	usr/bin/cstrunner.exe
 	usr/bin/visualimagecompare.exe
-	usr/share/doc/calligra-tools/
 "
 calligra_words_SUMMARY="KDE word processor (aka KWord)"
 calligra_words_CONTENTS="
 	etc/postinstall/
+	usr/bin/*calligraauthor*
 	usr/bin/*calligrawords*
 	usr/bin/cygwordsprivate-*.dll
 	usr/include/kde4/words/
 	usr/lib/kde4/applixwordimport.dll
+	usr/lib/kde4/asciiexport.dll
 	usr/lib/kde4/asciiimport.dll
+	usr/lib/kde4/authorpart.dll
 	usr/lib/kde4/docximport.dll
-	usr/lib/kde4/htmlodf_export.dll
+	usr/lib/kde4/exportMobi.dll
+	usr/lib/kde4/exportepub2.dll
+	usr/lib/kde4/exporthtml.dll
 	usr/lib/kde4/mswordodf_import.dll
 	usr/lib/kde4/rtfimport.dll
 	usr/lib/kde4/wordspart.dll
+	usr/lib/kde4/wpdimport.dll
 	usr/lib/kde4/wpsimport.dll
 	usr/lib/libwordsprivate.dll.a
+	usr/share/applications/kde4/author.desktop
 	usr/share/applications/kde4/words.desktop
-	usr/share/icons/hicolor/*/apps/words.*
+	usr/share/icons/hicolor/*/actions/tool_pagelayout.*
+	usr/share/icons/hicolor/*/apps/calligraauthor.*
+	usr/share/icons/hicolor/*/apps/calligrawords.*
+	usr/share/kde4/apps/author/
 	usr/share/kde4/apps/words/
+	usr/share/kde4/config/authorrc
 	usr/share/kde4/config/wordsrc
-	usr/share/kde4/services/html-odf_export.desktop
+	usr/share/kde4/services/ServiceMenus/words_print.desktop
+	usr/share/kde4/services/authorpart.desktop
 	usr/share/kde4/services/words*
-	usr/share/kde4/services/ServiceMenus/words_konqi.desktop
 	usr/share/templates/.source/TextDocument.odt
 	usr/share/templates/TextDocument.desktop
 "
@@ -323,7 +337,6 @@ braindump_CONTENTS="
 	usr/share/icons/hicolor/*/apps/braindump.*
 	usr/share/kde4/apps/braindump/
 	usr/share/kde4/apps/stateshape/
-	usr/share/kde4/config/braindumprc
 	usr/share/kde4/services/stateshape.desktop
 	usr/share/kde4/services/webshape.desktop
 	usr/share/kde4/servicetypes/braindump_extensions.desktop
@@ -337,12 +350,12 @@ karbon_CONTENTS="
 	usr/lib/kde4/wpgimport.dll
 	usr/share/applications/kde4/karbon.desktop
 	usr/share/doc/karbon/
-	usr/share/icons/hicolor/*/apps/karbon.*
+	usr/share/icons/hicolor/*/apps/calligrakarbon.*
 	usr/share/kde4/apps/karbon/
 	usr/share/kde4/config/karbonrc
+	usr/share/kde4/services/ServiceMenus/karbon_print.desktop
 	usr/share/kde4/services/karbon*
 	usr/share/kde4/servicetypes/karbon_module.desktop
-	usr/share/kde4/services/ServiceMenus/karbon_konqi.desktop
 	usr/share/templates/.source/Illustration.odg
 	usr/share/templates/Illustration.desktop
 "
@@ -360,6 +373,7 @@ kexi_CONTENTS="
 	usr/share/applications/kde4/kexi.desktop
 	usr/share/doc/HTML/en/kexi/
 	usr/share/doc/kexi/
+	usr/share/icons/hicolor/*/apps/calligrakexi.*
 	usr/share/kde4/apps/kexi/
 	usr/share/kde4/config/kexirc
 	usr/share/kde4/services/kexi*
@@ -378,14 +392,14 @@ krita_CONTENTS="
 	usr/share/applications/kde4/krita*
 	usr/share/color/icc/krita/
 	usr/share/doc/krita/
-	usr/share/icons/hicolor/*/apps/krita.*
+	usr/share/icons/hicolor/*/apps/calligrakrita.*
 	usr/share/kde4/apps/krita*/
 	usr/share/kde4/apps/color-schemes/Krita*
 	usr/share/kde4/config/krita*
+	usr/share/kde4/services/ServiceMenus/krita_print.desktop
 	usr/share/kde4/services/krita*
-	usr/share/kde4/services/ServiceMenus/krita_konqi.desktop
 	usr/share/kde4/servicetypes/krita*
-	usr/share/mime/packages/krita_ora.xml
+	usr/share/mime/packages/krita*.xml
 "
 okular_odp_SUMMARY="Okular OpenDocument Presentation plugin"
 okular_odp_CONTENTS="
@@ -396,4 +410,4 @@ okular_odp_CONTENTS="
 "
 
 # active: not working
-CYGCMAKE_ARGS="-DIHAVEPATCHEDQT=YES -DBUILD_active=NO -DQCA2_LIBRARIES=${QT4_LIBDIR}/libqca.dll.a"
+CYGCMAKE_ARGS="-DIHAVEPATCHEDQT=YES -DBUILD_active=NO"
