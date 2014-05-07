@@ -11,14 +11,3 @@ libmso is a static library and depends on other calligra shared libs
  
  kde4_add_executable(ppttoodp ppttoodpmain.cpp)
  target_link_libraries(ppttoodp ppttoodplib)
---- origsrc/calligra-2.3.83/filters/words/msword-odf/CMakeLists.txt	2011-10-22 02:39:33.000000000 -0500
-+++ src/calligra-2.3.83/filters/words/msword-odf/CMakeLists.txt	2011-11-02 21:19:04.641085800 -0500
-@@ -25,7 +25,7 @@ kde4_add_plugin(mswordodf_import ${mswor
- 
- #TODO cause of NumberFormatParser we depend on msooxml. Fix that!
- #target_link_libraries(mswordodf_import kowv2 komain mso ${ZLIB_LIBRARIES})
--target_link_libraries(mswordodf_import kowv2 komain mso msooxml ${ZLIB_LIBRARIES})
-+target_link_libraries(mswordodf_import mso kowv2 komain msooxml ${ZLIB_LIBRARIES})
- 
- install(TARGETS mswordodf_import  DESTINATION ${PLUGIN_INSTALL_DIR})
- 
