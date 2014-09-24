@@ -1,7 +1,7 @@
 inherit kde4 python
 
 NAME="calligra"
-VERSION=2.8.2
+VERSION=2.8.5
 RELEASE=1
 CATEGORY="Office"
 SUMMARY="KDE integrated office suite"
@@ -40,30 +40,19 @@ calligra_libs_CONTENTS="
 	usr/bin/cygcalligradb-*.dll
 	usr/bin/cygcalligrakdchart-*.dll
 	usr/bin/cygcalligrakdgantt-*.dll
+	usr/bin/cygcalligrasheets*-*.dll
+	usr/bin/cygcalligrastageprivate-*.dll
 	usr/bin/cygflake-*.dll
+	usr/bin/cygkexi*-*.dll
+	usr/bin/cygkformdesigner-*.dll
 	usr/bin/cygkformula-*.dll
-	usr/bin/cygkokross-*.dll
-	usr/bin/cygkomain-*.dll
-	usr/bin/cygkomsooxml-*.dll
-	usr/bin/cygkoodf-*.dll
-	usr/bin/cygkoodf2-*.dll
-	usr/bin/cygkoodfreader-*.dll
-	usr/bin/cygkopageapp-*.dll
-	usr/bin/cygkoplugin-*.dll
-	usr/bin/cygkoproperty-*.dll
-	usr/bin/cygkordf-*.dll
-	usr/bin/cygkoreport-*.dll
-	usr/bin/cygkotext-*.dll
-	usr/bin/cygkotextlayout-*.dll
-	usr/bin/cygkovectorimage-*.dll
-	usr/bin/cygkowidgets-*.dll
-	usr/bin/cygkowidgetutils-*.dll
-	usr/bin/cygkowv2-*.dll
+	usr/bin/cygko*-*.dll
+	usr/bin/cygkrita*-*.dll
 	usr/bin/cygkundo2-*.dll
-	usr/bin/cygpigmentcms-*.dll
 	usr/bin/cygRtfReader-*.dll
+	usr/bin/cygwordsprivate-*.dll
+	usr/bin/cygpigmentcms-*.dll
 	usr/lib/kde4/calligra_docker_*.dll
-	usr/lib/kde4/calligra_semanticitem_*.dll
 	usr/lib/kde4/calligra_shape_*.dll
 	usr/lib/kde4/calligra_textediting_*.dll
 	usr/lib/kde4/calligra_textinlineobject_*.dll
@@ -82,7 +71,6 @@ calligra_libs_CONTENTS="
 	usr/share/kde4/apps/musicshape/
 	usr/share/kde4/services/calligra_docker_*.desktop
 	usr/share/kde4/services/calligra_odg_thumbnail.desktop
-	usr/share/kde4/services/calligra_semanticitem_*.desktop
 	usr/share/kde4/services/calligra_shape_*.desktop
 	usr/share/kde4/services/calligra_textediting_*.desktop
 	usr/share/kde4/services/calligra_textinlineobject_*.desktop
@@ -100,7 +88,6 @@ calligra_libs_CONTENTS="
 	usr/share/kde4/servicetypes/calligra_deferred_plugin.desktop
 	usr/share/kde4/servicetypes/calligra_filter.desktop
 	usr/share/kde4/servicetypes/calligra_part.desktop
-	usr/share/kde4/servicetypes/calligra_semanticitem.desktop
 	usr/share/kde4/servicetypes/filtereffect.desktop
 	usr/share/kde4/servicetypes/flake.desktop
 	usr/share/kde4/servicetypes/flakedevice.desktop
@@ -118,14 +105,26 @@ calligra_libs_CONTENTS="
 calligra_devel_SUMMARY="Calligra Suite libraries (development)"
 calligra_devel_CONTENTS="
 	usr/include/kde4/calligra/
+	usr/include/kde4/kexi/
+	usr/include/kde4/krita/
+	usr/include/kde4/sheets/
+	usr/include/kde4/stage/
+	usr/include/kde4/words/
+	usr/include/kde4/KoPABackgroundTool.h
 	usr/lib/libbasicflakes.dll.a
 	usr/lib/libcalligradb.dll.a
 	usr/lib/libcalligrakdchart.dll.a
 	usr/lib/libcalligrakdgantt.dll.a
+	usr/lib/libcalligrasheets*.dll.a
+	usr/lib/libcalligrastageprivate.dll.a
 	usr/lib/libflake.dll.a
+	usr/lib/libkexi*.dll.a
+	usr/lib/libkformdesigner.dll.a
 	usr/lib/libkformula.dll.a
 	usr/lib/libko*.dll.a
+	usr/lib/libkrita*.dll.a
 	usr/lib/libkundo2.dll.a
+	usr/lib/libwordsprivate.dll.a
 	usr/lib/libpigmentcms.dll.a
 	usr/share/kde4/apps/cmake/
 "
@@ -160,7 +159,8 @@ calligra_flow_CONTENTS="
 calligra_plan_SUMMARY="KDE project management application (aka KPlato)"
 calligra_plan_CONTENTS="
 	etc/postinstall/
-	usr/bin/*calligraplan*
+	usr/bin/calligraplan*.exe
+	usr/bin/cygkdeinit4_calligraplan*.dll
 	usr/bin/cygkplato*-*.dll
 	usr/bin/cygplan*-*.dll
 	usr/bin/cygrcps_plan-*.dll
@@ -188,8 +188,8 @@ calligra_plan_CONTENTS="
 calligra_sheets_SUMMARY="KDE spreadsheet program (aka KSpread)"
 calligra_sheets_CONTENTS="
 	etc/postinstall/
-	usr/bin/*calligrasheets*
-	usr/include/kde4/sheets/
+	usr/bin/calligrasheets.exe
+	usr/bin/cygkdeinit4_calligrasheets.dll
 	usr/lib/kde4/calligra_filter_*2kspread.dll
 	usr/lib/kde4/calligra_filter_*2ods.dll
 	usr/lib/kde4/calligra_filter_*2sheets.dll
@@ -200,7 +200,6 @@ calligra_sheets_CONTENTS="
 	usr/lib/kde4/krossmodulesheets.dll
 	usr/lib/kde4/kspread*
 	usr/lib/kde4/sheetssolver.dll
-	usr/lib/libcalligrasheets*
 	usr/share/applications/kde4/sheets.desktop
 	usr/share/doc/calligra-sheets/
 	usr/share/doc/HTML/en/sheets/
@@ -225,13 +224,12 @@ calligra_sheets_CONTENTS="
 calligra_stage_SUMMARY="KDE presentation program (aka KPresenter)"
 calligra_stage_CONTENTS="
 	etc/postinstall/
-	usr/bin/*calligrastage*
-	usr/include/kde4/stage/
+	usr/bin/calligrastage.exe
+	usr/bin/cygkdeinit4_calligrastage.dll
 	usr/lib/kde4/calligra_filter_*2odp.dll
 	usr/lib/kde4/calligrastage*
 	usr/lib/kde4/kprvariables.dll
 	usr/lib/kde4/kpr_*
-	usr/lib/libcalligrastageprivate.dll.a
 	usr/share/applications/kde4/stage.desktop
 	usr/share/doc/HTML/en/stage/
 	usr/share/doc/calligra-stage/
@@ -262,16 +260,15 @@ calligra_tools_CONTENTS="
 calligra_words_SUMMARY="KDE word processor (aka KWord)"
 calligra_words_CONTENTS="
 	etc/postinstall/
-	usr/bin/*calligraauthor*
-	usr/bin/*calligrawords*
-	usr/bin/cygwordsprivate-*.dll
-	usr/include/kde4/words/
+	usr/bin/calligraauthor.exe
+	usr/bin/calligrawords.exe
+	usr/bin/cygkdeinit4_calligraauthor.dll
+	usr/bin/cygkdeinit4_calligrawords.dll
 	usr/lib/kde4/authorpart.dll
 	usr/lib/kde4/calligra_filter_*2odt.dll
 	usr/lib/kde4/calligra_filter_*2words.dll
 	usr/lib/kde4/calligra_filter_odt2*.dll
 	usr/lib/kde4/wordspart.dll
-	usr/lib/libwordsprivate.dll.a
 	usr/share/applications/kde4/author.desktop
 	usr/share/applications/kde4/calligrawords_ascii.desktop
 	usr/share/applications/kde4/words.desktop
@@ -294,9 +291,9 @@ calligra_words_CONTENTS="
 braindump_SUMMARY="KDE whiteboard application"
 braindump_CONTENTS="
 	etc/postinstall/
-	usr/bin/*braindump*
+	usr/bin/braindump.exe
+	usr/bin/cygbraindumpcore-*.dll
 	usr/lib/kde4/braindump*
-	usr/lib/libbraindumpcore.dll.a
 	usr/share/applications/kde4/braindump.desktop
 	usr/share/icons/hicolor/*/actions/stateshape.*
 	usr/share/icons/hicolor/*/actions/statetool.*
@@ -309,7 +306,9 @@ braindump_CONTENTS="
 karbon_SUMMARY="KDE SVG drawing application"
 karbon_CONTENTS="
 	etc/postinstall/
-	usr/bin/*karbon*
+	usr/bin/karbon.exe
+	usr/bin/cygkarbon*-*.dll
+	usr/bin/cygkdeinit4_karbon.dll
 	usr/lib/kde4/calligra_filter_karbon*.dll
 	usr/lib/kde4/calligra_filter_[^k]*2svg.dll
 	usr/lib/kde4/calligra_filter_svg2karbon.dll
@@ -333,14 +332,10 @@ karbon_CONTENTS="
 kexi_SUMMARY="KDE data management application"
 kexi_CONTENTS="
 	etc/postinstall/
-	usr/bin/cygkformdesigner-*.dll
-	usr/bin/*kexi*
-	usr/include/kde4/kexi/
+	usr/bin/kexi*.exe
 	usr/lib/kde4/kexi*
 	usr/lib/kde4/kformdesigner_*
 	usr/lib/kde4/krossmodulekexidb.dll
-	usr/lib/libkexi*
-	usr/lib/libkformdesigner.dll.a
 	usr/share/applications/kde4/kexi.desktop
 	usr/share/doc/HTML/en/kexi/
 	usr/share/doc/kexi/
@@ -355,12 +350,12 @@ kexi_CONTENTS="
 krita_SUMMARY="KDE layered pixel image editing program"
 krita_CONTENTS="
 	etc/postinstall/
+	usr/bin/cygkdeinit4_krita.dll
+	usr/bin/cygkritasketchlib.dll
 	usr/bin/gmicparser.exe
-	usr/bin/*krita*
-	usr/include/kde4/krita/
+	usr/bin/krita*.exe
 	usr/lib/calligra/imports/org/krita/
 	usr/lib/kde4/krita*
-	usr/lib/libkrita*
 	usr/share/appdata/krita.appdata.xml
 	usr/share/applications/kde4/krita*
 	usr/share/color/icc/krita/
@@ -384,6 +379,7 @@ okular_odp_CONTENTS="
 PKG_IGNORE="
 	usr/lib/kde4/*.dll.a
 	usr/lib/libRtfReader.dll.a
+	usr/lib/libbraindumpcore.dll.a
 	usr/lib/libflowprivate.dll.a
 	usr/lib/libkarbon*.dll.a
 "
