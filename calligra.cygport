@@ -1,7 +1,7 @@
 inherit kde4 python
 
 NAME="calligra"
-VERSION=2.8.5
+VERSION=2.8.6
 RELEASE=1
 CATEGORY="Office"
 SUMMARY="KDE integrated office suite"
@@ -11,7 +11,6 @@ SRC_URI="mirror://kde/stable/calligra-${VERSION}/calligra-${VERSION}.tar.xz"
 PATCH_URI="
 	2.3.83-as-needed.patch
 	2.3.83-cygwin-ctype.patch
-	2.3.83-dcmtk-static.patch
 	2.3.83-find-libkcal.patch
 	2.3.83-find-librcps.patch
 "
@@ -79,9 +78,9 @@ calligra_libs_CONTENTS="
 	usr/share/kde4/services/kformulapart.desktop
 	usr/share/kde4/services/kolcmsengine.desktop
 	usr/share/kde4/services/kopabackgroundtool.desktop
-	usr/share/kde4/services/koreport_barcodeplugin.desktop
-	usr/share/kde4/services/koreport_mapsplugin.desktop
-	usr/share/kde4/services/koreport_webplugin.desktop
+	usr/share/kde4/services/calligra/koreport_barcodeplugin.desktop
+	usr/share/kde4/services/calligra/koreport_mapsplugin.desktop
+	usr/share/kde4/services/calligra/koreport_webplugin.desktop
 	usr/share/kde4/servicetypes/calligradb_driver.desktop
 	usr/share/kde4/servicetypes/calligradocker.desktop
 	usr/share/kde4/servicetypes/calligra_application.desktop
@@ -342,8 +341,8 @@ kexi_CONTENTS="
 	usr/share/icons/hicolor/*/apps/calligrakexi.*
 	usr/share/kde4/apps/kexi/
 	usr/share/kde4/config/kexirc
-	usr/share/kde4/services/kexi*
-	usr/share/kde4/services/kformdesigner/
+	usr/share/kde4/services/calligra/kexi*
+	usr/share/kde4/services/calligra/kformdesigner*
 	usr/share/kde4/servicetypes/kexi*
 	usr/share/kde4/servicetypes/widgetfactory.desktop
 "
