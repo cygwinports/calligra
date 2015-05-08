@@ -1,14 +1,13 @@
 inherit kde4 python
 
 NAME="calligra"
-VERSION=2.9.2
+VERSION=2.9.4
 RELEASE=1
 CATEGORY="Office"
 SUMMARY="KDE integrated office suite"
 HOMEPAGE="http://www.calligra-suite.org/"
 SRC_URI="mirror://kde/stable/calligra-${VERSION}/calligra-${VERSION}.tar.xz"
 PATCH_URI="
-	http://pkgs.fedoraproject.org/cgit/calligra.git/plain/fix_csv_import.patch
 	2.9.2-as-needed.patch
 	2.3.83-find-librcps.patch
 	2.8.7-qml-module.patch
@@ -48,6 +47,8 @@ calligra_libs_CONTENTS="
 	usr/bin/cygko*-*.dll
 	usr/bin/cygkrita*.dll
 	usr/bin/cygkundo2-*.dll
+	usr/bin/cyglibglobal-*.dll
+	usr/bin/cyglibkispsd-*.dll
 	usr/bin/cygRtfReader-*.dll
 	usr/bin/cygwordsprivate-*.dll
 	usr/bin/cygpigmentcms-*.dll
@@ -378,7 +379,7 @@ krita_CONTENTS="
 	usr/share/color/icc/krita/
 	usr/share/doc/krita/
 	usr/share/icons/hicolor/*/apps/calligrakrita.*
-	usr/share/icons/hicolor/*/apps/kritasketch.*
+	usr/share/icons/hicolor/*/apps/krita*
 	usr/share/kde4/apps/krita*/
 	usr/share/kde4/apps/color-schemes/Krita*
 	usr/share/kde4/config/krita*
@@ -409,6 +410,8 @@ PKG_IGNORE="
 	usr/lib/libbraindumpcore.dll.a
 	usr/lib/libflowprivate.dll.a
 	usr/lib/libkarbon*.dll.a
+	usr/lib/liblibglobal.dll.a
+	usr/lib/liblibkispsd.dll.a
 "
 
 CYGCMAKE_ARGS="-DIHAVEPATCHEDQT=YES"
