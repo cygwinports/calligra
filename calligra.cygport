@@ -2,17 +2,19 @@ inherit kde4 python
 
 NAME="calligra"
 VERSION=2.9.4
-RELEASE=1
+RELEASE=2
 CATEGORY="Office"
 SUMMARY="KDE integrated office suite"
 HOMEPAGE="http://www.calligra-suite.org/"
 SRC_URI="mirror://kde/stable/calligra-${VERSION}/calligra-${VERSION}.tar.xz"
 PATCH_URI="
+	http://pkgs.fedoraproject.org/cgit/calligra.git/plain/calligra-2.9.0-disable_products.patch
 	2.9.2-as-needed.patch
 	2.3.83-find-librcps.patch
 	2.8.7-qml-module.patch
 	2.9.2-cygwin-gmic.patch
 	2.9.2-cygwin-postgresql.patch
+	2.9.4-disable-krita-gemini.patch
 "
 
 PKG_NAMES="calligra-libs calligra-data calligra-devel calligra-flow
@@ -169,7 +171,6 @@ calligra_plan_CONTENTS="
 	usr/bin/cygkplato*-*.dll
 	usr/bin/cygplan*-*.dll
 	usr/bin/cygrcps_plan-*.dll
-	usr/lib/kde4/calligra_filter_*2plan.dll
 	usr/lib/kde4/kplatorcpsscheduler.dll
 	usr/lib/kde4/krossmoduleplan.dll
 	usr/lib/kde4/plan*
@@ -185,11 +186,9 @@ calligra_plan_CONTENTS="
 	usr/share/kde4/apps/plan*/
 	usr/share/kde4/config/plan*
 	usr/share/kde4/config.kcfg/plan*
-	usr/share/kde4/services/calligra/calligra_filter_*2plan.desktop
 	usr/share/kde4/services/calligra/krossmoduleplan.desktop
 	usr/share/kde4/services/calligra/plan*
 	usr/share/kde4/servicetypes/plan_*.desktop
-	usr/share/mime/packages/calligra_planner_mpp.xml
 "
 calligra_sheets_SUMMARY="KDE spreadsheet program (aka KSpread)"
 calligra_sheets_CONTENTS="
@@ -263,9 +262,6 @@ calligra_tools_SUMMARY="Calligra Suite command-line tools"
 calligra_tools_CONTENTS="
 	usr/bin/calligra.exe
 	usr/bin/calligraconverter.exe
-	usr/bin/cstester.exe
-	usr/bin/cstrunner.exe
-	usr/bin/visualimagecompare.exe
 "
 calligra_words_SUMMARY="KDE word processor (aka KWord)"
 calligra_words_CONTENTS="
@@ -370,7 +366,6 @@ krita_CONTENTS="
 	etc/postinstall/
 	usr/bin/gmicparser.exe
 	usr/bin/krita*.exe
-	usr/lib/calligra/imports/org/krita/
 	usr/lib/kde4/krita*
 	usr/lib/kde4/plugins/imageformats/kimg_kra.dll
 	usr/lib/kde4/plugins/imageformats/kimg_ora.dll
@@ -379,7 +374,6 @@ krita_CONTENTS="
 	usr/share/color/icc/krita/
 	usr/share/doc/krita/
 	usr/share/icons/hicolor/*/apps/calligrakrita.*
-	usr/share/icons/hicolor/*/apps/krita*
 	usr/share/kde4/apps/krita*/
 	usr/share/kde4/apps/color-schemes/Krita*
 	usr/share/kde4/config/krita*
@@ -403,8 +397,6 @@ okular_calligra_CONTENTS="
 "
 # active, gemini: not working
 PKG_IGNORE="
-	${calligra_active_CONTENTS}
-	${calligra_gemini_CONTENTS}
 	usr/lib/kde4/*.dll.a
 	usr/lib/libRtfReader.dll.a
 	usr/lib/libbraindumpcore.dll.a
