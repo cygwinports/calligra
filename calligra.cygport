@@ -32,7 +32,7 @@ calligra_data_CONTENTS="
 	usr/share/kde4/apps/calligra/
 	usr/share/mime/packages/msooxml-all.xml
 "
-calligra_libs_REQUIRES="calligra-data"
+calligra_libs_REQUIRES="calligra-data kde-runtime"
 calligra_libs_SUMMARY="Calligra Suite libraries and common plugins"
 calligra_libs_CONTENTS="
 	--exclude=calligra_shape_spreadsheet*
