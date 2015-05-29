@@ -342,6 +342,7 @@ karbon_CONTENTS="
 	usr/share/templates/.source/Illustration.odg
 	usr/share/templates/Illustration.desktop
 "
+kexi_REQUIRES="kate4-part"
 kexi_SUMMARY="KDE data management application"
 kexi_CONTENTS="
 	etc/postinstall/
