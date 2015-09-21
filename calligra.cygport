@@ -1,8 +1,8 @@
 inherit kde4 python
 
 NAME="calligra"
-VERSION=2.9.4
-RELEASE=2
+VERSION=2.9.7
+RELEASE=1
 CATEGORY="Office"
 SUMMARY="KDE integrated office suite"
 HOMEPAGE="http://www.calligra-suite.org/"
@@ -15,6 +15,7 @@ PATCH_URI="
 	2.9.2-cygwin-gmic.patch
 	2.9.2-cygwin-postgresql.patch
 	2.9.4-disable-krita-gemini.patch
+	2.9.7-bko291374.patch
 "
 
 PKG_NAMES="calligra-libs calligra-data calligra-devel calligra-flow
@@ -49,8 +50,6 @@ calligra_libs_CONTENTS="
 	usr/bin/cygko*-*.dll
 	usr/bin/cygkrita*.dll
 	usr/bin/cygkundo2-*.dll
-	usr/bin/cyglibglobal-*.dll
-	usr/bin/cyglibkispsd-*.dll
 	usr/bin/cygRtfReader-*.dll
 	usr/bin/cygwordsprivate-*.dll
 	usr/bin/cygpigmentcms-*.dll
@@ -164,6 +163,7 @@ calligra_flow_CONTENTS="
 	usr/share/kde4/servicetypes/flow_dock.desktop
 "
 calligra_plan_SUMMARY="KDE project management application (aka KPlato)"
+calligra_plan_REQUIRES="kross-python"
 calligra_plan_CONTENTS="
 	etc/postinstall/
 	usr/bin/calligraplan*.exe
@@ -191,6 +191,7 @@ calligra_plan_CONTENTS="
 	usr/share/kde4/servicetypes/plan_*.desktop
 "
 calligra_sheets_SUMMARY="KDE spreadsheet program (aka KSpread)"
+calligra_sheets_REQUIRES="kross-python kross-ruby"
 calligra_sheets_CONTENTS="
 	etc/postinstall/
 	usr/bin/calligrasheets.exe
@@ -315,6 +316,7 @@ braindump_CONTENTS="
 	usr/share/kde4/servicetypes/braindump_extensions.desktop
 "
 karbon_SUMMARY="KDE SVG drawing application"
+karbon_REQUIRES="pstoedit"
 karbon_CONTENTS="
 	etc/postinstall/
 	usr/bin/karbon.exe
@@ -388,11 +390,10 @@ krita_CONTENTS="
 "
 okular_calligra_SUMMARY="Okular office document format plugins"
 okular_calligra_OBSOLETES="okular-odp"
+okular_calligra_REQUIRES="calligra-stage calligra-words"
 okular_calligra_CONTENTS="
 	usr/lib/kde4/okularGenerator_*.dll
 	usr/share/applications/kde4/okularApplication_*.desktop
-	usr/share/kde4/services/calligra/libokularGenerator_*.desktop
-	usr/share/kde4/services/calligra/okular*.desktop
 	usr/share/kde4/services/libokularGenerator_*.desktop
 	usr/share/kde4/services/okular*.desktop
 "
@@ -403,8 +404,6 @@ PKG_IGNORE="
 	usr/lib/libbraindumpcore.dll.a
 	usr/lib/libflowprivate.dll.a
 	usr/lib/libkarbon*.dll.a
-	usr/lib/liblibglobal.dll.a
-	usr/lib/liblibkispsd.dll.a
 "
 
 CYGCMAKE_ARGS="-DIHAVEPATCHEDQT=YES"
