@@ -5,7 +5,8 @@ VERSION=2.9.11
 RELEASE=1
 CATEGORY="Office"
 SUMMARY="KDE integrated office suite"
-HOMEPAGE="http://www.calligra-suite.org/"
+DESCRIPTION="Calligra Suite is a set of productivity applications for the KDE desktop."
+HOMEPAGE="http://www.calligra.org/"
 SRC_URI="mirror://kde/stable/calligra-${VERSION}/calligra-${VERSION}.tar.xz"
 PATCH_URI="
 	http://pkgs.fedoraproject.org/cgit/calligra.git/plain/calligra-2.9.0-disable_products.patch
