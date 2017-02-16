@@ -2,7 +2,7 @@ inherit kde4 python
 
 NAME="calligra"
 VERSION=2.9.11
-RELEASE=1
+RELEASE=2
 CATEGORY="Office"
 SUMMARY="KDE integrated office suite"
 DESCRIPTION="Calligra Suite is a set of productivity applications for the KDE desktop."
@@ -11,20 +11,24 @@ SRC_URI="mirror://kde/stable/calligra-${VERSION}/calligra-${VERSION}.tar.xz"
 PATCH_URI="
 	http://pkgs.fedoraproject.org/cgit/calligra.git/plain/calligra-2.9.0-disable_products.patch
 	http://pkgs.fedoraproject.org/cgit/calligra.git/plain/0001-adapt-to-libwps-0.4.patch
+	http://pkgs.fedoraproject.org/cgit/rpms/calligra.git/plain/0065-Backport-Plan-Fix-crash-due-to-accessing-deleted-obj.patch
+	http://pkgs.fedoraproject.org/cgit/rpms/calligra.git/plain/0066-Backport-Plan-Do-not-crash-if-scheduler-plugins-not-.patch
+	http://pkgs.fedoraproject.org/cgit/rpms/calligra.git/plain/0067-Backport-Plan-Fix-insert-file.patch
+	http://pkgs.fedoraproject.org/cgit/rpms/calligra.git/plain/0068-Backport-Plan-Fix-task-module-load-and-save.patch
+	http://pkgs.fedoraproject.org/cgit/rpms/calligra.git/plain/0069-Backport-Plan-Avoid-crash-in-special-cases.patch
+	http://pkgs.fedoraproject.org/cgit/rpms/calligra.git/plain/0070-Plan-Guard-against-trying-to-move-a-task-into-the-sa.patch
 	2.9.2-as-needed.patch
 	2.3.83-find-librcps.patch
-	2.8.7-qml-module.patch
-	2.9.2-cygwin-gmic.patch
 	2.9.2-cygwin-postgresql.patch
-	2.9.4-disable-krita-gemini.patch
 	2.9.7-bko291374.patch
+	2.9.11-disable-krita.patch
 "
 
 PKG_NAMES="calligra-libs calligra-data calligra-devel calligra-flow
 	   calligra-plan calligra-sheets calligra-stage calligra-tools
-	   calligra-words braindump karbon kexi krita okular-calligra"
+	   calligra-words braindump karbon kexi okular-calligra"
 # the entire suite, except for -devel
-calligra_REQUIRES="calligra-flow calligra-plan calligra-stage calligra-sheets calligra-words calligra-tools braindump karbon kexi krita"
+calligra_REQUIRES="calligra-flow calligra-plan calligra-stage calligra-sheets calligra-words calligra-tools braindump karbon kexi"
 calligra_data_SUMMARY="Calligra Suite (common data)"
 calligra_data_CONTENTS="
 	etc/postinstall/
@@ -43,19 +47,11 @@ calligra_libs_CONTENTS="
 	usr/bin/cygcalligradb-*.dll
 	usr/bin/cygcalligrakdchart-*.dll
 	usr/bin/cygcalligrakdgantt-*.dll
-	usr/bin/cygcalligrasheets*-*.dll
-	usr/bin/cygcalligrastageprivate-*.dll
 	usr/bin/cygflake-*.dll
-	usr/bin/cygkexi*-*.dll
-	usr/bin/cygkformdesigner-*.dll
 	usr/bin/cygkformula-*.dll
 	usr/bin/cygko*-*.dll
-	usr/bin/cygkrita*.dll
 	usr/bin/cygkundo2-*.dll
-	usr/bin/cygRtfReader-*.dll
-	usr/bin/cygwordsprivate-*.dll
 	usr/bin/cygpigmentcms-*.dll
-	usr/lib/calligra/imports/org/calligra/CalligraComponents
 	usr/lib/kde4/calligra_docker_*.dll
 	usr/lib/kde4/calligra_shape_*.dll
 	usr/lib/kde4/calligra_textediting_*.dll
@@ -106,7 +102,6 @@ calligra_libs_CONTENTS="
 calligra_devel_SUMMARY="Calligra Suite libraries (development)"
 calligra_devel_CONTENTS="
 	usr/include/kde4/calligra/
-	usr/include/kde4/krita/
 	usr/include/kde4/sheets/
 	usr/include/kde4/stage/
 	usr/include/kde4/words/
@@ -115,15 +110,9 @@ calligra_devel_CONTENTS="
 	usr/lib/libcalligrakdchart.dll.a
 	usr/lib/libcalligrakdgantt.dll.a
 	usr/lib/libcalligrasheets*.dll.a
-	usr/lib/libcalligrastageprivate.dll.a
 	usr/lib/libflake.dll.a
-	usr/lib/libkexi*.dll.a
-	usr/lib/libkformdesigner.dll.a
-	usr/lib/libkformula.dll.a
 	usr/lib/libko*.dll.a
-	usr/lib/libkrita*.dll.a
 	usr/lib/libkundo2.dll.a
-	usr/lib/libwordsprivate.dll.a
 	usr/lib/libpigmentcms.dll.a
 	usr/share/kde4/apps/cmake/
 "
@@ -197,6 +186,7 @@ calligra_sheets_REQUIRES="kross-python kross-ruby"
 calligra_sheets_CONTENTS="
 	etc/postinstall/
 	usr/bin/calligrasheets.exe
+	usr/bin/cygcalligrasheets*-*.dll
 	usr/bin/cygkdeinit4_calligrasheets.dll
 	usr/lib/kde4/calligra_filter_*2kspread.dll
 	usr/lib/kde4/calligra_filter_*2ods.dll
@@ -235,6 +225,7 @@ calligra_stage_SUMMARY="KDE presentation program (aka KPresenter)"
 calligra_stage_CONTENTS="
 	etc/postinstall/
 	usr/bin/calligrastage.exe
+	usr/bin/cygcalligrastageprivate-*.dll
 	usr/bin/cygkdeinit4_calligrastage.dll
 	usr/lib/kde4/calligra_filter_*2odp.dll
 	usr/lib/kde4/calligrastage*
@@ -269,6 +260,8 @@ calligra_tools_CONTENTS="
 calligra_words_SUMMARY="KDE word processor (aka KWord)"
 calligra_words_CONTENTS="
 	etc/postinstall/
+	usr/bin/cygRtfReader-*.dll
+	usr/bin/cygwordsprivate-*.dll
 	usr/bin/calligraauthor.exe
 	usr/bin/calligrawords.exe
 	usr/bin/cygkdeinit4_calligraauthor.dll
@@ -350,6 +343,8 @@ kexi_REQUIRES="kate4-part"
 kexi_SUMMARY="KDE data management application"
 kexi_CONTENTS="
 	etc/postinstall/
+	usr/bin/cygkexi*-*.dll
+	usr/bin/cygkformdesigner-*.dll
 	usr/bin/kexi*.exe
 	usr/lib/kde4/kexi*
 	usr/lib/kde4/kformdesigner_*
@@ -366,30 +361,6 @@ kexi_CONTENTS="
 	usr/share/kde4/servicetypes/kexi*
 	usr/share/kde4/servicetypes/widgetfactory.desktop
 "
-krita_SUMMARY="KDE layered pixel image editing program"
-krita_CONTENTS="
-	etc/postinstall/
-	usr/bin/gmicparser.exe
-	usr/bin/krita*.exe
-	usr/lib/kde4/krita*
-	usr/lib/kde4/plugins/imageformats/kimg_kra.dll
-	usr/lib/kde4/plugins/imageformats/kimg_ora.dll
-	usr/share/appdata/krita.appdata.xml
-	usr/share/applications/kde4/krita*
-	usr/share/color/icc/krita/
-	usr/share/doc/krita/
-	usr/share/icons/hicolor/*/apps/calligrakrita2.*
-	usr/share/kde4/apps/krita*/
-	usr/share/kde4/apps/color-schemes/Krita*
-	usr/share/kde4/config/krita*
-	usr/share/kde4/services/ServiceMenus/calligra/krita_print.desktop
-	usr/share/kde4/services/calligra/krita*
-	usr/share/kde4/services/krita*
-	usr/share/kde4/services/qimageioplugins/kra.desktop
-	usr/share/kde4/services/qimageioplugins/ora.desktop
-	usr/share/kde4/servicetypes/krita*
-	usr/share/mime/packages/krita*.xml
-"
 okular_calligra_SUMMARY="Okular office document format plugins"
 okular_calligra_OBSOLETES="okular-odp"
 okular_calligra_REQUIRES="calligra-stage calligra-words"
@@ -404,8 +375,13 @@ PKG_IGNORE="
 	usr/lib/kde4/*.dll.a
 	usr/lib/libRtfReader.dll.a
 	usr/lib/libbraindumpcore.dll.a
+	usr/lib/libcalligrastageprivate.dll.a
 	usr/lib/libflowprivate.dll.a
 	usr/lib/libkarbon*.dll.a
+	usr/lib/libkexi*.dll.a
+	usr/lib/libkformdesigner.dll.a
+	usr/lib/libkformula.dll.a
+	usr/lib/libwordsprivate.dll.a
 "
 
 CYGCMAKE_ARGS="-DIHAVEPATCHEDQT=YES"
