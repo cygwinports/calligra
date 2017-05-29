@@ -2,7 +2,7 @@ inherit kde4 python
 
 NAME="calligra"
 VERSION=2.9.11
-RELEASE=2
+RELEASE=3
 CATEGORY="Office"
 SUMMARY="KDE integrated office suite"
 DESCRIPTION="Calligra Suite is a set of productivity applications for the KDE desktop."
