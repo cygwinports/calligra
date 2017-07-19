@@ -2,7 +2,7 @@ inherit kde4 python
 
 NAME="calligra"
 VERSION=2.9.11
-RELEASE=3
+RELEASE=4
 CATEGORY="Office"
 SUMMARY="KDE integrated office suite"
 DESCRIPTION="Calligra Suite is a set of productivity applications for the KDE desktop."
@@ -19,16 +19,20 @@ PATCH_URI="
 	http://pkgs.fedoraproject.org/cgit/rpms/calligra.git/plain/0070-Plan-Guard-against-trying-to-move-a-task-into-the-sa.patch
 	2.9.2-as-needed.patch
 	2.3.83-find-librcps.patch
-	2.9.2-cygwin-postgresql.patch
 	2.9.7-bko291374.patch
-	2.9.11-disable-krita.patch
+	2.9.11-disable-apps.patch
+	2.9.11-cygwin-drivers.patch
+	2.9.11-marblewidget.patch
 "
 
 PKG_NAMES="calligra-libs calligra-data calligra-devel calligra-flow
 	   calligra-plan calligra-sheets calligra-stage calligra-tools
-	   calligra-words braindump karbon kexi okular-calligra"
+	   calligra-words karbon" # okular-calligra
+calligra_libs_OBSOLETES="braindump"
+# REMOVE when upgrading to 3.x (okular switched to KF5)
+calligra_libs_OBSOLETES+=" okular-calligra okular-odp"
 # the entire suite, except for -devel
-calligra_REQUIRES="calligra-flow calligra-plan calligra-stage calligra-sheets calligra-words calligra-tools braindump karbon kexi"
+calligra_REQUIRES="calligra-flow calligra-plan calligra-stage calligra-sheets calligra-words calligra-tools karbon"
 calligra_data_SUMMARY="Calligra Suite (common data)"
 calligra_data_CONTENTS="
 	etc/postinstall/
@@ -60,6 +64,7 @@ calligra_libs_CONTENTS="
 	usr/lib/kde4/calligradocinfopropspage.dll
 	usr/lib/kde4/calligraimagethumbnail.dll
 	usr/lib/kde4/calligrathumbnail.dll
+	usr/lib/kde4/kexidb_sqlite3*.dll
 	usr/lib/kde4/kolcmsengine.dll
 	usr/lib/kde4/kopabackgroundtool.dll
 	usr/lib/kde4/koreport_*plugin.dll
@@ -74,6 +79,7 @@ calligra_libs_CONTENTS="
 	usr/share/kde4/services/calligra/calligra_textinlineobject_*.desktop
 	usr/share/kde4/services/calligra/calligra_tool_*.desktop
 	usr/share/kde4/services/calligra/calligradocinfopropspage.desktop
+	usr/share/kde4/services/calligra/kexidb_sqlite3driver.desktop
 	usr/share/kde4/services/calligra/kformulapart.desktop
 	usr/share/kde4/services/calligra/kolcmsengine.desktop
 	usr/share/kde4/services/calligra/kopabackgroundtool.desktop
@@ -294,22 +300,6 @@ calligra_words_CONTENTS="
 	usr/share/templates/.source/TextDocument.odt
 	usr/share/templates/TextDocument.desktop
 "
-braindump_SUMMARY="KDE whiteboard application"
-braindump_CONTENTS="
-	etc/postinstall/
-	usr/bin/braindump.exe
-	usr/bin/cygbraindumpcore-*.dll
-	usr/lib/kde4/braindump*
-	usr/share/appdata/braindump.appdata.xml
-	usr/share/applications/kde4/braindump.desktop
-	usr/share/icons/hicolor/*/actions/stateshape.*
-	usr/share/icons/hicolor/*/actions/statetool.*
-	usr/share/icons/hicolor/*/apps/braindump.*
-	usr/share/kde4/apps/braindump/
-	usr/share/kde4/apps/stateshape/
-	usr/share/kde4/services/calligra/braindump_*.desktop
-	usr/share/kde4/servicetypes/braindump_extensions.desktop
-"
 karbon_SUMMARY="KDE SVG drawing application"
 karbon_REQUIRES="pstoedit"
 karbon_CONTENTS="
@@ -339,28 +329,6 @@ karbon_CONTENTS="
 	usr/share/templates/.source/Illustration.odg
 	usr/share/templates/Illustration.desktop
 "
-kexi_REQUIRES="kate4-part"
-kexi_SUMMARY="KDE data management application"
-kexi_CONTENTS="
-	etc/postinstall/
-	usr/bin/cygkexi*-*.dll
-	usr/bin/cygkformdesigner-*.dll
-	usr/bin/kexi*.exe
-	usr/lib/kde4/kexi*
-	usr/lib/kde4/kformdesigner_*
-	usr/lib/kde4/krossmodulekexidb.dll
-	usr/share/appdata/kexi.appdata.xml
-	usr/share/applications/kde4/kexi.desktop
-	usr/share/doc/HTML/en/kexi/
-	usr/share/doc/kexi/
-	usr/share/icons/hicolor/*/apps/calligrakexi.*
-	usr/share/kde4/apps/kexi/
-	usr/share/kde4/config/kexirc
-	usr/share/kde4/services/calligra/kexi*
-	usr/share/kde4/services/calligra/kformdesigner*
-	usr/share/kde4/servicetypes/kexi*
-	usr/share/kde4/servicetypes/widgetfactory.desktop
-"
 okular_calligra_SUMMARY="Okular office document format plugins"
 okular_calligra_OBSOLETES="okular-odp"
 okular_calligra_REQUIRES="calligra-stage calligra-words"
@@ -374,12 +342,9 @@ okular_calligra_CONTENTS="
 PKG_IGNORE="
 	usr/lib/kde4/*.dll.a
 	usr/lib/libRtfReader.dll.a
-	usr/lib/libbraindumpcore.dll.a
 	usr/lib/libcalligrastageprivate.dll.a
 	usr/lib/libflowprivate.dll.a
 	usr/lib/libkarbon*.dll.a
-	usr/lib/libkexi*.dll.a
-	usr/lib/libkformdesigner.dll.a
 	usr/lib/libkformula.dll.a
 	usr/lib/libwordsprivate.dll.a
 "

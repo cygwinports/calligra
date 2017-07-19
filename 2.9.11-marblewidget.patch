@@ -1,0 +1,13 @@
+--- origsrc/calligra-2.9.11/cmake/modules/FindCalligraMarble.cmake	2016-02-02 13:53:13.000000000 -0600
++++ src/calligra-2.9.11/cmake/modules/FindCalligraMarble.cmake	2017-07-18 13:11:21.309273800 -0500
+@@ -62,8 +62,8 @@ if ( MARBLE_INCLUDE_DIR AND MARBLE_GLOBA
+    set( MARBLE_FIND_QUIETLY TRUE )
+ endif ()
+ 
+-find_path( MARBLE_INCLUDE_DIR NAMES marble/MarbleMap.h PATH_SUFFIXES marble)
+-find_file( MARBLE_GLOBAL_HEADER NAMES marble/MarbleGlobal.h PATH_SUFFIXES marble)
++find_path( MARBLE_INCLUDE_DIR NAMES marble/MarbleMap.h PATH_SUFFIXES marble marblewidget)
++find_file( MARBLE_GLOBAL_HEADER NAMES marble/MarbleGlobal.h PATH_SUFFIXES marble marblewidget)
+ find_library( MARBLE_LIBRARIES NAMES marblewidget )
+ 
+ if(MARBLE_GLOBAL_HEADER)
