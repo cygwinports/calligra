@@ -1,0 +1,85 @@
+--- origsrc/calligra-3.0.1/karbon/main.cpp	2017-03-18 20:34:17.000000000 -0500
++++ src/calligra-3.0.1/karbon/main.cpp	2017-11-07 01:54:00.926767400 -0600
+@@ -52,7 +52,7 @@ public:
+ };
+ #endif
+ 
+-extern "C" KARBONUI_EXPORT int kdemain( int argc, char* argv[] )
++extern "C" Q_DECL_EXPORT int kdemain( int argc, char* argv[] )
+ {
+     /**
+      * Disable debug output by default, only log warnings.
+--- origsrc/calligra-3.0.1/libs/main/tests/CMakeLists.txt	2017-03-18 20:34:17.000000000 -0500
++++ src/calligra-3.0.1/libs/main/tests/CMakeLists.txt	2017-11-06 18:23:48.168639800 -0600
+@@ -15,6 +15,7 @@ endmacro()
+ 
+ set(priorityqueue_test_SRCS priorityqueue_test.cpp ../MainDebug.cpp)
+ komain_add_unit_test(priorityQueueTest ${priorityqueue_test_SRCS}  LINK_LIBRARIES KF5::I18n Qt5::Test)
++set_target_properties(priorityQueueTest PROPERTIES COMPILE_DEFINITIONS "KOMAIN_STATIC_DEFINE")
+ 
+ ########### next target ###############
+ 
+--- origsrc/calligra-3.0.1/plan/main.cpp	2017-03-18 20:34:17.000000000 -0500
++++ src/calligra-3.0.1/plan/main.cpp	2017-11-07 11:05:39.043118900 -0600
+@@ -25,7 +25,7 @@
+ 
+ #include <QLoggingCategory>
+ 
+-extern "C" KPLATO_EXPORT int kdemain( int argc, char **argv )
++extern "C" Q_DECL_EXPORT int kdemain( int argc, char **argv )
+ {
+     /**
+      * Disable debug output by default, only log warnings.
+--- origsrc/calligra-3.0.1/plan/plugins/schedulers/tj/CMakeLists.txt	2017-03-18 20:34:17.000000000 -0500
++++ src/calligra-3.0.1/plan/plugins/schedulers/tj/CMakeLists.txt	2017-11-07 13:13:46.647774400 -0600
+@@ -46,6 +46,5 @@ target_link_libraries(
+     kplatokernel
+ )
+ 
+-set_target_properties( plantjscheduler PROPERTIES DEFINE_SYMBOL MAKE_KPLATOTJ_LIB )
+ 
+ install( TARGETS plantjscheduler DESTINATION ${PLUGIN_INSTALL_DIR}/calligraplan/schedulers )
+--- origsrc/calligra-3.0.1/plan/workpackage/main.cpp	2017-03-18 20:34:17.000000000 -0500
++++ src/calligra-3.0.1/plan/workpackage/main.cpp	2017-11-07 09:34:33.058789800 -0600
+@@ -29,7 +29,7 @@
+ 
+ #include <Calligra2Migration.h>
+ 
+-extern "C" KPLATOWORK_EXPORT int kdemain( int argc, char **argv )
++extern "C" Q_DECL_EXPORT int kdemain( int argc, char **argv )
+ {
+     QApplication app(argc, argv);
+ #ifdef Q_OS_MACOS
+--- origsrc/calligra-3.0.1/plugins/formulashape/tests/CMakeLists.txt	2017-03-18 20:34:17.000000000 -0500
++++ src/calligra-3.0.1/plugins/formulashape/tests/CMakeLists.txt	2017-11-07 13:44:29.062065000 -0600
+@@ -51,7 +51,7 @@ TestCursor.cpp
+    ../KoFormulaTool.cpp
+    ../FormulaCommand.cpp
+ )
+-if(NOT WIN32)
++if(NOT WIN32 AND NOT CYGWIN)
+ set(TestCursor_SRCS
+     ${TestCursor_SRCS}
+     ../FormulaCursor.cpp)
+--- origsrc/calligra-3.0.1/sheets/part/Main.cpp	2017-03-18 20:34:17.000000000 -0500
++++ src/calligra-3.0.1/sheets/part/Main.cpp	2017-11-06 23:35:29.421259300 -0600
+@@ -29,7 +29,7 @@
+ 
+ using namespace Calligra::Sheets;
+ 
+-extern "C" CALLIGRA_SHEETS_COMMON_EXPORT int kdemain(int argc, char **argv)
++extern "C" Q_DECL_EXPORT int kdemain(int argc, char **argv)
+ {
+     /**
+      * Disable debug output by default, only log warnings.
+--- origsrc/calligra-3.0.1/words/app/main.cpp	2017-03-18 20:34:17.000000000 -0500
++++ src/calligra-3.0.1/words/app/main.cpp	2017-11-06 23:33:59.590089900 -0600
+@@ -25,7 +25,7 @@
+ 
+ #include <QLoggingCategory>
+ 
+-extern "C" WORDS_EXPORT int kdemain(int argc, char **argv)
++extern "C" Q_DECL_EXPORT int kdemain(int argc, char **argv)
+ {
+     /**
+      * Disable debug output by default, only log warnings.

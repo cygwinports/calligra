@@ -1,0 +1,63 @@
+--- origsrc/calligra-3.0.1/filters/libmsooxml/CMakeLists.txt	2017-03-18 20:34:17.000000000 -0500
++++ src/calligra-3.0.1/filters/libmsooxml/CMakeLists.txt	2017-11-07 01:05:33.006587400 -0600
+@@ -38,7 +38,6 @@ set(msooxml_LIB_SRCS
+     PredefinedShapeHelper.cpp
+     ComplexShapeHandler.cpp
+     ${CMAKE_SOURCE_DIR}/filters/sheets/xlsx/XlsxChartOdfWriter.cpp
+-    ${CMAKE_SOURCE_DIR}/filters/libodf2/chart/KoOdfChartWriter.cpp
+     # TODO: move back to kolibs
+     KoOdfExporter.cpp
+ )
+--- origsrc/calligra-3.0.1/filters/sheets/excel/import/CMakeLists.txt	2017-03-18 20:34:17.000000000 -0500
++++ src/calligra-3.0.1/filters/sheets/excel/import/CMakeLists.txt	2017-11-07 01:43:16.942120100 -0600
+@@ -35,7 +35,6 @@ set(sidewinder_SRCS
+   ${CMAKE_CURRENT_SOURCE_DIR}/../sidewinder/worksheetsubstreamhandler.cpp
+   ${CMAKE_CURRENT_SOURCE_DIR}/../sidewinder/chartsubstreamhandler.cpp
+   ${CMAKE_CURRENT_SOURCE_DIR}/../sidewinder/XlsRecordOutputStream.cpp
+-  ${CMAKE_SOURCE_DIR}/filters/libodf2/chart/KoOdfChartWriter.cpp
+   ${CMAKE_CURRENT_BINARY_DIR}/records.cpp
+ )
+ 
+--- origsrc/calligra-3.0.1/filters/stage/powerpoint/CMakeLists.txt	2017-03-18 20:34:17.000000000 -0500
++++ src/calligra-3.0.1/filters/stage/powerpoint/CMakeLists.txt	2017-11-06 16:56:13.332869100 -0600
+@@ -9,7 +9,7 @@ include_directories(
+ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${KDE4_ENABLE_EXCEPTIONS} -fPIC")
+ 
+ add_library(ppttoodplib STATIC PptDebug.cpp PptToOdp.cpp ParsedPresentation.cpp DateTimeFormat.cpp pptstyle.cpp)
+-target_link_libraries(ppttoodplib PUBLIC koodf mso)
++target_link_libraries(ppttoodplib PUBLIC mso koodf)
+ 
+ add_executable(ppttoodp ppttoodpmain.cpp)
+ target_link_libraries(ppttoodp ppttoodplib)
+--- origsrc/calligra-3.0.1/filters/stage/pptx/CMakeLists.txt	2017-03-18 20:34:17.000000000 -0500
++++ src/calligra-3.0.1/filters/stage/pptx/CMakeLists.txt	2017-11-07 01:26:44.945671600 -0600
+@@ -16,7 +16,6 @@ set(pptx2odp_PART_SRCS
+     PptxXmlCommentsReader.cpp
+     PptxXmlCommentAuthorsReader.cpp
+     ${CMAKE_SOURCE_DIR}/filters/sheets/xlsx/XlsxChartOdfWriter.cpp
+-    ${CMAKE_SOURCE_DIR}/filters/libodf2/chart/KoOdfChartWriter.cpp
+     ${CMAKE_SOURCE_DIR}/filters/sheets/xlsx/XlsxXmlChartReader.cpp
+ )
+ 
+--- origsrc/calligra-3.0.1/filters/words/docx/import/CMakeLists.txt	2017-03-18 20:34:17.000000000 -0500
++++ src/calligra-3.0.1/filters/words/docx/import/CMakeLists.txt	2017-11-07 01:22:26.571365100 -0600
+@@ -22,7 +22,6 @@ set(docx2odt_PART_SRCS
+     DocxXmlSettingsReader.cpp
+     DocxImport.cpp
+     ${CMAKE_SOURCE_DIR}/filters/sheets/xlsx/XlsxChartOdfWriter.cpp
+-    ${CMAKE_SOURCE_DIR}/filters/libodf2/chart/KoOdfChartWriter.cpp
+     ${CMAKE_SOURCE_DIR}/filters/sheets/xlsx/XlsxXmlChartReader.cpp
+ )
+ 
+--- origsrc/calligra-3.0.1/filters/words/msword-odf/CMakeLists.txt	2017-03-18 20:34:17.000000000 -0500
++++ src/calligra-3.0.1/filters/words/msword-odf/CMakeLists.txt	2017-11-06 16:56:37.681632400 -0600
+@@ -22,7 +22,7 @@ kde_enable_exceptions()
+ add_library(calligra_filter_doc2odt MODULE ${doc2odt_PART_SRCS})
+ calligra_filter_desktop_to_json(calligra_filter_doc2odt calligra_filter_doc2odt.desktop)
+ 
+-target_link_libraries(calligra_filter_doc2odt kowv2 komain mso)
++target_link_libraries(calligra_filter_doc2odt mso kowv2 komain)
+ 
+ install(TARGETS calligra_filter_doc2odt  DESTINATION ${PLUGIN_INSTALL_DIR}/calligra/formatfilters)
+ 
+

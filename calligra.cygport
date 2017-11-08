@@ -1,352 +1,253 @@
-inherit kde4 python
+inherit kf5
 
 NAME="calligra"
-VERSION=2.9.11
-RELEASE=4
+VERSION=3.0.1
+RELEASE=1
 CATEGORY="Office"
 SUMMARY="KDE integrated office suite"
 DESCRIPTION="Calligra Suite is a set of productivity applications for the KDE desktop."
 HOMEPAGE="http://www.calligra.org/"
-SRC_URI="mirror://kde/stable/calligra-${VERSION}/calligra-${VERSION}.tar.xz"
+SRC_URI="mirror://kde/stable/calligra/${VERSION}/calligra-${VERSION}.tar.xz"
 PATCH_URI="
-	http://pkgs.fedoraproject.org/cgit/calligra.git/plain/calligra-2.9.0-disable_products.patch
-	http://pkgs.fedoraproject.org/cgit/calligra.git/plain/0001-adapt-to-libwps-0.4.patch
-	http://pkgs.fedoraproject.org/cgit/rpms/calligra.git/plain/0065-Backport-Plan-Fix-crash-due-to-accessing-deleted-obj.patch
-	http://pkgs.fedoraproject.org/cgit/rpms/calligra.git/plain/0066-Backport-Plan-Do-not-crash-if-scheduler-plugins-not-.patch
-	http://pkgs.fedoraproject.org/cgit/rpms/calligra.git/plain/0067-Backport-Plan-Fix-insert-file.patch
-	http://pkgs.fedoraproject.org/cgit/rpms/calligra.git/plain/0068-Backport-Plan-Fix-task-module-load-and-save.patch
-	http://pkgs.fedoraproject.org/cgit/rpms/calligra.git/plain/0069-Backport-Plan-Avoid-crash-in-special-cases.patch
-	http://pkgs.fedoraproject.org/cgit/rpms/calligra.git/plain/0070-Plan-Guard-against-trying-to-move-a-task-into-the-sa.patch
-	2.9.2-as-needed.patch
-	2.3.83-find-librcps.patch
-	2.9.7-bko291374.patch
-	2.9.11-disable-apps.patch
-	2.9.11-cygwin-drivers.patch
-	2.9.11-marblewidget.patch
+	http://pkgs.fedoraproject.org/cgit/rpms/calligra.git/plain/calligra-disable_products.patch
+	http://pkgs.fedoraproject.org/cgit/rpms/calligra.git/plain/calligra-3.0.1-karbon_pdf_overlinking.patch
+	3.0.1-as-needed.patch
+	3.0.1-bko291374.patch
+	3.0.1-dllexport.patch
+	3.0.1-find-librcps.patch
+	3.0.1-ftm.patch
 "
 
-PKG_NAMES="calligra-libs calligra-data calligra-devel calligra-flow
-	   calligra-plan calligra-sheets calligra-stage calligra-tools
-	   calligra-words karbon" # okular-calligra
-calligra_libs_OBSOLETES="braindump"
-# REMOVE when upgrading to 3.x (okular switched to KF5)
-calligra_libs_OBSOLETES+=" okular-calligra okular-odp"
+PKG_NAMES="calligra-libs calligra-data calligra-plan calligra-sheets calligra-stage
+	calligra-tools calligra-words karbon okular-calligra"
 # the entire suite, except for -devel
 calligra_REQUIRES="calligra-flow calligra-plan calligra-stage calligra-sheets calligra-words calligra-tools karbon"
+for l in bs ca ca-valencia cs da de el en_GB es et fi fr gl hu it ja kk \
+         nb nl pl pt pt_BR ru sk sv tr uk zh_CN zh_TW
+do
+	calligra_data_OBSOLETES+=" calligra-l10n-$l"
+done
+unset l
 calligra_data_SUMMARY="Calligra Suite (common data)"
 calligra_data_CONTENTS="
-	etc/postinstall/
-	usr/share/applications/kde4/calligra.desktop
-	usr/share/doc/HTML/en/calligra/
+	--exclude=calligra_shape_spreadsheet*
+	etc/xdg/calligra_stencils.knsrc
 	usr/share/doc/calligra/
-	usr/share/icons/oxygen/
-	usr/share/kde4/apps/calligra/
+	usr/share/calligra/
+	usr/share/calligra_shape_music/
+	usr/share/color/icc/calligra/
+	usr/share/locale/*/*/calligra.mo
+	usr/share/locale/*/*/calligra-defaulttools.mo
+	usr/share/locale/*/*/calligra-dockers.mo
+	usr/share/locale/*/*/calligra_shape_*.mo
+	usr/share/locale/*/*/calligra_textediting_*.mo
+	usr/share/locale/*/*/calligra_textinlineobject_*.mo
+	usr/share/locale/*/*/calligrafilters.mo
+	usr/share/locale/*/*/kocolorspaces.mo
+	usr/share/mime/packages/calligra_svm.xml
 	usr/share/mime/packages/msooxml-all.xml
 "
-calligra_libs_REQUIRES="calligra-data kde-runtime"
+calligra_libs_REQUIRES="calligra-data"
+calligra_libs_OBSOLETES="braindump calligra-devel calligra-flow"
 calligra_libs_SUMMARY="Calligra Suite libraries and common plugins"
+calligra_libs_DOCS="libs/README"
 calligra_libs_CONTENTS="
+	--exclude=cygkookularGenerator*
 	--exclude=calligra_shape_spreadsheet*
 	usr/bin/cygbasicflakes-*.dll
-	usr/bin/cygcalligradb-*.dll
-	usr/bin/cygcalligrakdchart-*.dll
-	usr/bin/cygcalligrakdgantt-*.dll
 	usr/bin/cygflake-*.dll
-	usr/bin/cygkformula-*.dll
 	usr/bin/cygko*-*.dll
 	usr/bin/cygkundo2-*.dll
 	usr/bin/cygpigmentcms-*.dll
-	usr/lib/kde4/calligra_docker_*.dll
-	usr/lib/kde4/calligra_shape_*.dll
-	usr/lib/kde4/calligra_textediting_*.dll
-	usr/lib/kde4/calligra_textinlineobject_*.dll
-	usr/lib/kde4/calligra_tool_*.dll
-	usr/lib/kde4/calligradocinfopropspage.dll
-	usr/lib/kde4/calligraimagethumbnail.dll
-	usr/lib/kde4/calligrathumbnail.dll
-	usr/lib/kde4/kexidb_sqlite3*.dll
-	usr/lib/kde4/kolcmsengine.dll
-	usr/lib/kde4/kopabackgroundtool.dll
-	usr/lib/kde4/koreport_*plugin.dll
-	usr/share/doc/calligra-libs/
-	usr/share/kde4/apps/formulashape/
-	usr/share/kde4/apps/koproperty/
-	usr/share/kde4/apps/musicshape/
-	usr/share/kde4/services/calligra_odg_thumbnail.desktop
-	usr/share/kde4/services/calligra/calligra_docker_*.desktop
-	usr/share/kde4/services/calligra/calligra_shape_*.desktop
-	usr/share/kde4/services/calligra/calligra_textediting_*.desktop
-	usr/share/kde4/services/calligra/calligra_textinlineobject_*.desktop
-	usr/share/kde4/services/calligra/calligra_tool_*.desktop
-	usr/share/kde4/services/calligra/calligradocinfopropspage.desktop
-	usr/share/kde4/services/calligra/kexidb_sqlite3driver.desktop
-	usr/share/kde4/services/calligra/kformulapart.desktop
-	usr/share/kde4/services/calligra/kolcmsengine.desktop
-	usr/share/kde4/services/calligra/kopabackgroundtool.desktop
-	usr/share/kde4/services/calligra/koreport_*plugin.desktop
-	usr/share/kde4/servicetypes/calligradb_driver.desktop
-	usr/share/kde4/servicetypes/calligradocker.desktop
-	usr/share/kde4/servicetypes/calligra_application.desktop
-	usr/share/kde4/servicetypes/calligra_deferred_plugin.desktop
-	usr/share/kde4/servicetypes/calligra_filter.desktop
-	usr/share/kde4/servicetypes/calligra_part.desktop
-	usr/share/kde4/servicetypes/filtereffect.desktop
-	usr/share/kde4/servicetypes/flake.desktop
-	usr/share/kde4/servicetypes/flakedevice.desktop
-	usr/share/kde4/servicetypes/flakeshape.desktop
-	usr/share/kde4/servicetypes/flaketool.desktop
-	usr/share/kde4/servicetypes/inlinetextobject.desktop
-	usr/share/kde4/servicetypes/kopa_tool.desktop
-	usr/share/kde4/servicetypes/koreport_itemplugin.desktop
-	usr/share/kde4/servicetypes/pigment.desktop
-	usr/share/kde4/servicetypes/pigmentextension.desktop
-	usr/share/kde4/servicetypes/presentationeventaction.desktop
-	usr/share/kde4/servicetypes/scripteventaction.desktop
-	usr/share/kde4/servicetypes/texteditingplugin.desktop
-	usr/share/mime/packages/calligra_svm.xml
-"
-calligra_devel_SUMMARY="Calligra Suite libraries (development)"
-calligra_devel_CONTENTS="
-	usr/include/kde4/calligra/
-	usr/include/kde4/sheets/
-	usr/include/kde4/stage/
-	usr/include/kde4/words/
-	usr/lib/libbasicflakes.dll.a
-	usr/lib/libcalligradb.dll.a
-	usr/lib/libcalligrakdchart.dll.a
-	usr/lib/libcalligrakdgantt.dll.a
-	usr/lib/libcalligrasheets*.dll.a
-	usr/lib/libflake.dll.a
-	usr/lib/libko*.dll.a
-	usr/lib/libkundo2.dll.a
-	usr/lib/libpigmentcms.dll.a
-	usr/share/kde4/apps/cmake/
-"
-calligra_active_SUMMARY="Calligra Suite Active Plasma interface"
-calligra_active_CONTENTS="
-	usr/bin/calligraactive.exe
-	usr/share/applications/kde4/calligraactive.desktop
-	usr/share/calligraactive/
-"
-calligra_gemini_CONTENTS="
-	usr/bin/calligragemini*
-	usr/lib/calligra/imports/Calligra/Gemini/
-	usr/share/applications/kde4/calligragemini.desktop
-	usr/share/icons/hicolor/*/apps/calligragemini.*
-	usr/share/kde4/apps/calligragemini/
+	usr/lib/qt5/plugins/calligra/colorspaces/
+	usr/lib/qt5/plugins/calligra/dockers/
+	usr/lib/qt5/plugins/calligra/shapefiltereffects/
+	usr/lib/qt5/plugins/calligra/shapes/
+	usr/lib/qt5/plugins/calligra/textediting/
+	usr/lib/qt5/plugins/calligra/textinlineobjects/calligra_textinlineobject_*
+	usr/lib/qt5/plugins/calligra/tools/calligra_tool_*
+	usr/lib/qt5/plugins/calligradocinfopropspage.dll
+	usr/lib/qt5/plugins/calligraimagethumbnail.dll
+	usr/lib/qt5/plugins/calligrathumbnail.dll
+	usr/lib/qt5/plugins/calligra/pageapptools/
+	usr/share/kservices5/calligradocinfopropspage.desktop
 "
 calligra_flow_SUMMARY="KDE diagram and flowchart editor (aka Kivio)"
+calligra_flow_DOCS="flow/README"
 calligra_flow_CONTENTS="
 	etc/postinstall/
 	usr/bin/calligraflow.exe
 	usr/bin/cygflowprivate-*.dll
-	usr/bin/cygkdeinit4_calligraflow.dll
-	usr/lib/kde4/calligra_filter_vsdx2odg.dll
-	usr/lib/kde4/calligra_filter_wpg2odg.dll
-	usr/lib/kde4/flowdockersplugin.dll
-	usr/lib/kde4/flowpart.dll
-	usr/share/appdata/flow.appdata.xml
-	usr/share/applications/kde4/flow.desktop
-	usr/share/doc/calligra-flow/
+	usr/bin/cygkdeinit5_calligraflow.dll
+	usr/lib/qt5/plugins/calligra/formatfilters/calligra_filter_vsdx2odg.dll
+	usr/lib/qt5/plugins/calligra/formatfilters/calligra_filter_xfig2odg.dll
+	usr/lib/qt5/plugins/calligra/parts/flowpart.dll
+	usr/share/applications/org.kde.calligraflow.desktop
 	usr/share/icons/hicolor/*/apps/calligraflow.*
-	usr/share/kde4/apps/flow/
-	usr/share/kde4/config/flowrc
-	usr/share/kde4/config/flow_stencils.knsrc
-	usr/share/kde4/services/ServiceMenus/calligra/flow_print.desktop
-	usr/share/kde4/services/calligra/calligra_filter_vsdx2odg.desktop
-	usr/share/kde4/services/calligra/calligra_filter_wpg2odg.desktop
-	usr/share/kde4/services/calligra/flow*
-	usr/share/kde4/services/flow*
-	usr/share/kde4/servicetypes/flow_dock.desktop
+	usr/share/calligraflow/
+	usr/share/kservices5/ServiceMenus/calligra/flow_print.desktop
+	usr/share/kservices5/flow_*_thumbnail.desktop
+	usr/share/locale/*/*/flow.mo
+	usr/share/metainfo/org.kde.calligraflow.appdata.xml
 "
 calligra_plan_SUMMARY="KDE project management application (aka KPlato)"
-calligra_plan_REQUIRES="kross-python"
+#calligra_plan_REQUIRES="kf5-kross-python"
 calligra_plan_CONTENTS="
 	etc/postinstall/
+	etc/xdg/calligraplan*
 	usr/bin/calligraplan*.exe
-	usr/bin/cygkdeinit4_calligraplan*.dll
+	usr/bin/cygkdeinit5_calligraplan*.dll
 	usr/bin/cygkplato*-*.dll
 	usr/bin/cygplan*-*.dll
-	usr/bin/cygrcps_plan-*.dll
-	usr/lib/kde4/kplatorcpsscheduler.dll
-	usr/lib/kde4/krossmoduleplan.dll
-	usr/lib/kde4/plan*
-	usr/lib/libkplato*
-	usr/lib/libplan*
-	usr/lib/librcps_plan.dll.a
-	usr/share/appdata/plan.appdata.xml
-	usr/share/applications/kde4/plan*
-	usr/share/doc/calligra-plan/
+	usr/lib/qt5/plugins/calligra/formatfilters/plan*
+	usr/lib/qt5/plugins/calligra/parts/calligraplanpart*.dll
+	usr/lib/qt5/plugins/calligraplan*/
+	usr/lib/qt5/plugins/calligraplan*.dll
+	usr/lib/qt5/plugins/kreport/planreport_textplugin.dll
+	usr/share/applications/org.kde.calligraplan*.desktop
+	usr/share/calligraplan*/
+	usr/share/config.kcfg/calligraplan*
 	usr/share/icons/hicolor/*/apps/calligraplan*
 	usr/share/icons/hicolor/*/mimetypes/application-x-vnd.kde.kplato.*
 	usr/share/icons/hicolor/*/mimetypes/application-x-vnd.kde.plan.*
-	usr/share/kde4/apps/plan*/
-	usr/share/kde4/config/plan*
-	usr/share/kde4/config.kcfg/plan*
-	usr/share/kde4/services/calligra/krossmoduleplan.desktop
-	usr/share/kde4/services/calligra/plan*
-	usr/share/kde4/servicetypes/plan_*.desktop
+	usr/share/kxmlgui5/calligraplan*/
+	usr/share/locale/*/*/calligraplan*.mo
+	usr/share/metainfo/org.kde.calligraplan.appdata.xml
 "
 calligra_sheets_SUMMARY="KDE spreadsheet program (aka KSpread)"
-calligra_sheets_REQUIRES="kross-python kross-ruby"
+#calligra_sheets_REQUIRES="kf5-kross-python kf5-kross-ruby"
+calligra_sheets_DOCS="sheets/README"
 calligra_sheets_CONTENTS="
 	etc/postinstall/
+	etc/xdg/calligrasheetsrc
 	usr/bin/calligrasheets.exe
 	usr/bin/cygcalligrasheets*-*.dll
-	usr/bin/cygkdeinit4_calligrasheets.dll
-	usr/lib/kde4/calligra_filter_*2kspread.dll
-	usr/lib/kde4/calligra_filter_*2ods.dll
-	usr/lib/kde4/calligra_filter_*2sheets.dll
-	usr/lib/kde4/calligra_filter_kspread2*.dll
-	usr/lib/kde4/calligra_filter_sheets2*.dll
-	usr/lib/kde4/calligra_shape_spreadsheet*.dll
-	usr/lib/kde4/calligrasheetspart.dll
-	usr/lib/kde4/krossmodulesheets.dll
-	usr/lib/kde4/kspread*
-	usr/lib/kde4/sheetssolver.dll
-	usr/share/appdata/sheets.appdata.xml
-	usr/share/applications/kde4/sheets.desktop
-	usr/share/doc/calligra-sheets/
-	usr/share/doc/HTML/en/sheets/
+	usr/bin/cygkdeinit5_calligrasheets.dll
+	usr/lib/qt5/plugins/calligra/deferred/calligra_shape_spreadsheet-deferred.dll
+	usr/lib/qt5/plugins/calligra/formatfilters/calligra_filter_*2kspread.dll
+	usr/lib/qt5/plugins/calligra/formatfilters/calligra_filter_*2ods.dll
+	usr/lib/qt5/plugins/calligra/formatfilters/calligra_filter_*2sheets.dll
+	usr/lib/qt5/plugins/calligra/formatfilters/calligra_filter_kspread2*.dll
+	usr/lib/qt5/plugins/calligra/formatfilters/calligra_filter_sheets2*.dll
+	usr/lib/qt5/plugins/calligra/parts/calligrasheetspart.dll
+	usr/lib/qt5/plugins/calligra/shapes/calligra_shape_spreadsheet.dll
+	usr/lib/qt5/plugins/calligrasheets/
+	usr/share/applications/org.kde.calligrasheets.desktop
+	usr/share/calligrasheets/
+	usr/share/config.kcfg/calligrasheets.kcfg
 	usr/share/icons/hicolor/*/apps/calligrasheets.*
-	usr/share/kde4/apps/sheets/
-	usr/share/kde4/config/sheetsrc
-	usr/share/kde4/config.kcfg/sheets.kcfg
-	usr/share/kde4/services/ServiceMenus/calligra/sheets_print.desktop
-	usr/share/kde4/services/calligra/calligra_filter_*2kspread.desktop
-	usr/share/kde4/services/calligra/calligra_filter_*2ods.desktop
-	usr/share/kde4/services/calligra/calligra_filter_*2sheets.desktop
-	usr/share/kde4/services/calligra/calligra_filter_kspread2*.desktop
-	usr/share/kde4/services/calligra/calligra_filter_sheets2*.desktop
-	usr/share/kde4/services/calligra/calligra_shape_spreadsheet*.desktop
-	usr/share/kde4/services/calligra/krossmodulesheets.desktop
-	usr/share/kde4/services/calligra/kspread*
-	usr/share/kde4/services/calligra/sheets*.desktop
-	usr/share/kde4/services/sheets*.desktop
-	usr/share/kde4/servicetypes/sheets_*.desktop
+	usr/share/kservices5/ServiceMenus/calligra/sheets_print.desktop
+	usr/share/kservices5/sheets*.desktop
+	usr/share/kxmlgui5/calligrasheets/
+	usr/share/locale/*/*/calligra_shape_spreadsheet.mo
+	usr/share/locale/*/*/calligrasheets*.mo
+	usr/share/metainfo/org.kde.calligrasheets.appdata.xml
 	usr/share/templates/.source/SpreadSheet.ods
 	usr/share/templates/SpreadSheet.desktop
 "
 calligra_stage_SUMMARY="KDE presentation program (aka KPresenter)"
+#	usr/bin/calligrastage.exe
+#	usr/bin/cygkdeinit5_calligrastage.dll
+#	usr/share/applications/org.kde.calligrastage.desktop
+#	usr/share/kservices5/ServiceMenus/calligra/stage_print.desktop
+#	usr/share/metainfo/org.kde.calligrastage.appdata.xml
 calligra_stage_CONTENTS="
 	etc/postinstall/
-	usr/bin/calligrastage.exe
+	etc/xdg/calligrastagerc
 	usr/bin/cygcalligrastageprivate-*.dll
-	usr/bin/cygkdeinit4_calligrastage.dll
-	usr/lib/kde4/calligra_filter_*2odp.dll
-	usr/lib/kde4/calligrastage*
-	usr/lib/kde4/kprvariables.dll
-	usr/lib/kde4/kpr_*
-	usr/share/appdata/stage.appdata.xml
-	usr/share/applications/kde4/stage.desktop
-	usr/share/doc/HTML/en/stage/
-	usr/share/doc/calligra-stage/
-	usr/share/icons/hicolor/16x16/actions/black.png
-	usr/share/icons/hicolor/16x16/actions/highlight.png
-	usr/share/icons/hicolor/16x16/actions/pen.png
+	usr/lib/qt5/plugins/calligra/formatfilters/calligra_filter_*2odp.dll
+	usr/lib/qt5/plugins/calligra/parts/calligrastagepart.dll
+	usr/lib/qt5/plugins/calligra/presentationeventactions/calligrastage*
+	usr/lib/qt5/plugins/calligra/textinlineobjects/kprvariables.dll
+	usr/lib/qt5/plugins/calligrastage/
+	usr/share/calligrastage/
 	usr/share/icons/hicolor/*/apps/calligrastage.*
-	usr/share/kde4/apps/stage/
-	usr/share/kde4/config/stagerc
-	usr/share/kde4/services/ServiceMenus/calligra/stage_print.desktop
-	usr/share/kde4/services/calligra/calligra_filter_*2odp.desktop
-	usr/share/kde4/services/calligra/calligrastage*
-	usr/share/kde4/services/calligra/kpr*
-	usr/share/kde4/services/calligra/stagepart.desktop
-	usr/share/kde4/services/stage_*
-	usr/share/kde4/servicetypes/kpr_*
+	usr/share/kservices5/stage_*
+	usr/share/kxmlgui5/calligrastage/
+	usr/share/locale/*/*/calligrastage*.mo
 	usr/share/mime/packages/x-iwork-keynote-sffkey.xml
 	usr/share/templates/.source/Presentation.odp
 	usr/share/templates/Presentation.desktop
 "
 calligra_tools_SUMMARY="Calligra Suite command-line tools"
+calligra_tools_DOCS="extras/README"
 calligra_tools_CONTENTS="
 	usr/bin/calligra.exe
 	usr/bin/calligraconverter.exe
+	usr/lib/qt5/qml/org/kde/calligra/
+	usr/share/locale/*/*/calligra-opener.mo
+	usr/share/locale/*/*/koconverter.mo
 "
 calligra_words_SUMMARY="KDE word processor (aka KWord)"
 calligra_words_CONTENTS="
 	etc/postinstall/
+	etc/xdg/calligrawordsrc
+	usr/bin/calligrawords.exe
 	usr/bin/cygRtfReader-*.dll
 	usr/bin/cygwordsprivate-*.dll
-	usr/bin/calligraauthor.exe
-	usr/bin/calligrawords.exe
-	usr/bin/cygkdeinit4_calligraauthor.dll
-	usr/bin/cygkdeinit4_calligrawords.dll
-	usr/lib/kde4/authorpart.dll
-	usr/lib/kde4/calligra_filter_*2odt.dll
-	usr/lib/kde4/calligra_filter_*2words.dll
-	usr/lib/kde4/calligra_filter_odt2*.dll
-	usr/lib/kde4/wordspart.dll
-	usr/share/appdata/words.appdata.xml
-	usr/share/applications/kde4/author.desktop
-	usr/share/applications/kde4/calligrawords_ascii.desktop
-	usr/share/applications/kde4/words.desktop
-	usr/share/icons/hicolor/*/actions/tool_pagelayout.*
-	usr/share/icons/hicolor/*/apps/calligraauthor.*
+	usr/bin/cygkdeinit5_calligrawords.dll
+	usr/lib/qt5/plugins/calligra/formatfilters/calligra_filter_*2odt.dll
+	usr/lib/qt5/plugins/calligra/formatfilters/calligra_filter_*2words.dll
+	usr/lib/qt5/plugins/calligra/formatfilters/calligra_filter_odt2*.dll
+	usr/lib/qt5/plugins/calligra/parts/calligrawordspart.dll
+	usr/share/applications/calligra_filter_odt2docx.desktop
+	usr/share/applications/org.kde.calligrawords.desktop
+	usr/share/applications/org.kde.calligrawords_ascii.desktop
+	usr/share/calligrawords/
 	usr/share/icons/hicolor/*/apps/calligrawords.*
-	usr/share/kde4/apps/author/
-	usr/share/kde4/apps/words/
-	usr/share/kde4/config/authorrc
-	usr/share/kde4/config/wordsrc
-	usr/share/kde4/services/ServiceMenus/calligra/words_print.desktop
-	usr/share/kde4/services/calligra/authorpart.desktop
-	usr/share/kde4/services/calligra/calligra_filter_*2odt.desktop
-	usr/share/kde4/services/calligra/calligra_filter_*2words.desktop
-	usr/share/kde4/services/calligra/calligra_filter_odt2*.desktop
-	usr/share/kde4/services/calligra/words*
-	usr/share/kde4/services/calligra_filter_odt2wiki.desktop
-	usr/share/kde4/services/words*
+	usr/share/kservices5/ServiceMenus/calligra/words_print.desktop
+	usr/share/kservices5/words_*_thumbnail.desktop
+	usr/share/kxmlgui5/calligrawords/
+	usr/share/locale/*/*/calligrawords.mo
+	usr/share/metainfo/org.kde.calligrawords.appdata.xml
 	usr/share/mime/packages/wiki-format.xml
 	usr/share/templates/.source/TextDocument.odt
 	usr/share/templates/TextDocument.desktop
 "
 karbon_SUMMARY="KDE SVG drawing application"
 karbon_REQUIRES="pstoedit"
+karbon_DOCS="karbon/README"
 karbon_CONTENTS="
 	etc/postinstall/
+	etc/xdg/karbonrc
 	usr/bin/karbon.exe
 	usr/bin/cygkarbon*-*.dll
-	usr/bin/cygkdeinit4_karbon.dll
-	usr/lib/kde4/calligra_filter_karbon*.dll
-	usr/lib/kde4/calligra_filter_[^k]*2svg*.dll
-	usr/lib/kde4/calligra_filter_svg2karbon.dll
-	usr/lib/kde4/calligra_filter_xfig2odg.dll
-	usr/lib/kde4/karbon*
-	usr/share/appdata/karbon.appdata.xml
-	usr/share/applications/kde4/karbon.desktop
-	usr/share/doc/karbon/
+	usr/bin/cygkdeinit5_karbon.dll
+	usr/lib/qt5/plugins/calligra/formatfilters/calligra_filter_karbon*.dll
+	usr/lib/qt5/plugins/calligra/formatfilters/calligra_filter_[^k]*2svg*.dll
+	usr/lib/qt5/plugins/calligra/formatfilters/calligra_filter_svg2karbon.dll
+	usr/lib/qt5/plugins/calligra/formatfilters/calligra_filter_vsdx2odg.dll
+	usr/lib/qt5/plugins/calligra/formatfilters/calligra_filter_wpg2odg.dll
+	usr/lib/qt5/plugins/calligra/formatfilters/calligra_filter_xfig2odg.dll
+	usr/lib/qt5/plugins/calligra/parts/karbonpart.dll
+	usr/lib/qt5/plugins/calligra/tools/karbon_tools.dll
+	usr/lib/qt5/plugins/karbon/
+	usr/share/applications/org.kde.karbon.desktop
 	usr/share/icons/hicolor/*/apps/calligrakarbon.*
-	usr/share/kde4/apps/karbon/
-	usr/share/kde4/config/karbonrc
-	usr/share/kde4/services/ServiceMenus/calligra/karbon_print.desktop
-	usr/share/kde4/services/calligra/calligra_filter_karbon*.desktop
-	usr/share/kde4/services/calligra/calligra_filter_[^k]*2svg*.desktop
-	usr/share/kde4/services/calligra/calligra_filter_svg*2karbon.desktop
-	usr/share/kde4/services/calligra/calligra_filter_xfig2odg.desktop
-	usr/share/kde4/services/calligra/karbon*
-	usr/share/kde4/services/karbon*
-	usr/share/kde4/servicetypes/karbon_*
+	usr/share/karbon/
+	usr/share/kservices5/ServiceMenus/calligra/karbon_print.desktop
+	usr/share/kservices5/calligra_odg_thumbnail.desktop
+	usr/share/kservices5/flow_*_thumbnail.desktop
+	usr/share/kservices5/karbon_*_thumbnail.desktop
+	usr/share/kxmlgui5/karbon/
+	usr/share/locale/*/*/[Kk]arbon*.mo
+	usr/share/metainfo/org.kde.karbon.appdata.xml
 	usr/share/templates/.source/Illustration.odg
 	usr/share/templates/Illustration.desktop
 "
 okular_calligra_SUMMARY="Okular office document format plugins"
 okular_calligra_OBSOLETES="okular-odp"
-okular_calligra_REQUIRES="calligra-stage calligra-words"
 okular_calligra_CONTENTS="
-	usr/lib/kde4/okularGenerator_*.dll
-	usr/share/applications/kde4/okularApplication_*.desktop
-	usr/share/kde4/services/libokularGenerator_*.desktop
-	usr/share/kde4/services/okular*.desktop
+	usr/bin/cygkookularGenerator_*-*.dll
+	usr/lib/qt5/plugins/okular/generators/okularGenerator_*_calligra.dll
+	usr/share/applications/okularApplication_*_calligra.desktop
+	usr/share/kservices5/okular*.desktop
+	usr/share/locale/*/*/okularGenerator_*.mo
 "
-# active, gemini: not working
 PKG_IGNORE="
-	usr/lib/kde4/*.dll.a
-	usr/lib/libRtfReader.dll.a
-	usr/lib/libcalligrastageprivate.dll.a
-	usr/lib/libflowprivate.dll.a
-	usr/lib/libkarbon*.dll.a
-	usr/lib/libkformula.dll.a
-	usr/lib/libwordsprivate.dll.a
+	usr/lib/lib*.dll.a
+	usr/share/locale/*/*/braindump.mo
+	usr/share/locale/*/*/calligra_semanticitem_*.mo
+	usr/share/locale/*/*/flow.mo
+	usr/share/locale/*/*/krossmodule*.mo
 "
-
-CYGCMAKE_ARGS="-DIHAVEPATCHEDQT=YES"
