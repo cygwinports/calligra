@@ -1,7 +1,7 @@
 inherit kf5
 
 NAME="calligra"
-VERSION=3.0.1
+VERSION=3.1.0
 RELEASE=1
 CATEGORY="Office"
 SUMMARY="KDE integrated office suite"
@@ -9,16 +9,14 @@ DESCRIPTION="Calligra Suite is a set of productivity applications for the KDE de
 HOMEPAGE="http://www.calligra.org/"
 SRC_URI="mirror://kde/stable/calligra/${VERSION}/calligra-${VERSION}.tar.xz"
 PATCH_URI="
-	http://pkgs.fedoraproject.org/cgit/rpms/calligra.git/plain/calligra-disable_products.patch
-	http://pkgs.fedoraproject.org/cgit/rpms/calligra.git/plain/calligra-3.0.1-karbon_pdf_overlinking.patch
-	3.0.1-as-needed.patch
+	http://src.fedoraproject.org/cgit/rpms/calligra.git/plain/calligra-disable_products.patch
 	3.0.1-bko291374.patch
 	3.0.1-dllexport.patch
 	3.0.1-find-librcps.patch
 	3.0.1-ftm.patch
 "
 
-PKG_NAMES="calligra-libs calligra-data calligra-plan calligra-sheets calligra-stage
+PKG_NAMES="calligra-libs calligra-data calligra-sheets calligra-stage
 	calligra-tools calligra-words karbon okular-calligra"
 # the entire suite, except for -devel
 calligra_REQUIRES="calligra-flow calligra-plan calligra-stage calligra-sheets calligra-words calligra-tools karbon"
@@ -90,30 +88,6 @@ calligra_flow_CONTENTS="
 	usr/share/locale/*/*/flow.mo
 	usr/share/metainfo/org.kde.calligraflow.appdata.xml
 "
-calligra_plan_SUMMARY="KDE project management application (aka KPlato)"
-#calligra_plan_REQUIRES="kf5-kross-python"
-calligra_plan_CONTENTS="
-	etc/postinstall/
-	etc/xdg/calligraplan*
-	usr/bin/calligraplan*.exe
-	usr/bin/cygkdeinit5_calligraplan*.dll
-	usr/bin/cygkplato*-*.dll
-	usr/bin/cygplan*-*.dll
-	usr/lib/qt5/plugins/calligra/formatfilters/plan*
-	usr/lib/qt5/plugins/calligra/parts/calligraplanpart*.dll
-	usr/lib/qt5/plugins/calligraplan*/
-	usr/lib/qt5/plugins/calligraplan*.dll
-	usr/lib/qt5/plugins/kreport/planreport_textplugin.dll
-	usr/share/applications/org.kde.calligraplan*.desktop
-	usr/share/calligraplan*/
-	usr/share/config.kcfg/calligraplan*
-	usr/share/icons/hicolor/*/apps/calligraplan*
-	usr/share/icons/hicolor/*/mimetypes/application-x-vnd.kde.kplato.*
-	usr/share/icons/hicolor/*/mimetypes/application-x-vnd.kde.plan.*
-	usr/share/kxmlgui5/calligraplan*/
-	usr/share/locale/*/*/calligraplan*.mo
-	usr/share/metainfo/org.kde.calligraplan.appdata.xml
-"
 calligra_sheets_SUMMARY="KDE spreadsheet program (aka KSpread)"
 #calligra_sheets_REQUIRES="kf5-kross-python kf5-kross-ruby"
 calligra_sheets_DOCS="sheets/README"
@@ -174,7 +148,6 @@ calligra_tools_DOCS="extras/README"
 calligra_tools_CONTENTS="
 	usr/bin/calligra.exe
 	usr/bin/calligraconverter.exe
-	usr/lib/qt5/qml/org/kde/calligra/
 	usr/share/locale/*/*/calligra-opener.mo
 	usr/share/locale/*/*/koconverter.mo
 "
@@ -190,7 +163,6 @@ calligra_words_CONTENTS="
 	usr/lib/qt5/plugins/calligra/formatfilters/calligra_filter_*2words.dll
 	usr/lib/qt5/plugins/calligra/formatfilters/calligra_filter_odt2*.dll
 	usr/lib/qt5/plugins/calligra/parts/calligrawordspart.dll
-	usr/share/applications/calligra_filter_odt2docx.desktop
 	usr/share/applications/org.kde.calligrawords.desktop
 	usr/share/applications/org.kde.calligrawords_ascii.desktop
 	usr/share/calligrawords/
